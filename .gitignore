@@ -1,0 +1,17 @@
+# Placeholder .gitignore — extend for the chosen stack at scaffold time.
+
+# Secrets & local config
+.env
+.env.local
+
+# OS files
+desktop.ini
+Thumbs.db
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
