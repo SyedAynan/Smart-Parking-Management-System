@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.png" alt="Smart Parking Management System Banner" width="100%"/>
+</p>
+
 # 🅿️ Smart Parking Management System
 
 [![Python Version](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
