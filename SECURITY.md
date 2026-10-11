@@ -16,12 +16,9 @@ or contact the maintainer via their GitHub profile.
 Include: affected file/endpoint, steps to reproduce, and impact.
 Expect an acknowledgement within 7 days.
 
-## Current state
+## Security Guidelines
 
-This repo has **no implementation yet** — no secrets, credentials, or live
-deployment exist. The standing rules, effective from the first code PR:
-
-- Never commit `.env` files, credentials, API keys, or real personal data.
-- Provide `.env.example` with safe placeholders when config is introduced.
-- No production or payment-gateway claims until a reviewed implementation,
-  tests, and this policy's deployment checklist exist.
+- Never commit `.env` files, production credentials, API keys, or sensitive customer data.
+- Keep `.env.example` updated with safe defaults and placeholders.
+- Always validate inputs through Pydantic schemas and utilize parameterized SQLite queries to protect against SQL injection.
+- Ensure automated test suite passes before submitting PRs.

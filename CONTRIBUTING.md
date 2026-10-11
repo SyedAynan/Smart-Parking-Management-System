@@ -1,9 +1,8 @@
 # Contributing to Smart Parking Management System
 
-Thanks for contributing! The repo is currently a placeholder — the most useful
-contributions right now are scope discussion via issues.
+Thanks for contributing! We welcome bug fixes, documentation improvements, and new feature ideas.
 
-## Workflow (once code work starts)
+## Development Workflow
 
 1. Branch from `main`: `feat/<short-name>` or `fix/<short-name>`
 2. One feature or fix per PR; keep the README's scope section in sync
