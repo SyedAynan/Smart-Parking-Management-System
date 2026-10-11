@@ -1,17 +1,32 @@
-# Placeholder .gitignore — extend for the chosen stack at scaffold time.
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+env/
 
-# Secrets & local config
+# Application & Database
+*.db
+*.db-journal
 .env
 .env.local
 
-# OS files
-desktop.ini
-Thumbs.db
-.DS_Store
-
-# IDE
-.vscode/
-.idea/
+# Tests, coverage & linters
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
 # Logs
 *.log
+
+# OS & Editor
+desktop.ini
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
