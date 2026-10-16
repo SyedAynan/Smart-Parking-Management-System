@@ -1,19 +1,22 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.egg-info/
+# Dependencies
+node_modules/
+.pnp/
+.pnp.*
+
+# Next.js
+.next/
+out/
 build/
 dist/
-.venv/
-venv/
-env/
 
-# Application & Database
-*.db
-*.db-journal
+# Production
+*.tsbuildinfo
+next-env.d.ts
+
+# Env files
 .env
 .env.local
+.env*.local
 
 # Tests, coverage & linters
 .pytest_cache/
@@ -23,6 +26,10 @@ htmlcov/
 
 # Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 # OS & Editor
 desktop.ini
@@ -30,3 +37,20 @@ Thumbs.db
 .DS_Store
 .vscode/
 .idea/
+
+# Misc
+*.pem
+.DS_Store
+
+# Python (kept — repo history has Python)
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Application & Database
+*.db
+*.db-journal
