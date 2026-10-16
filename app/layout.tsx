@@ -7,6 +7,7 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://smart-parking-management-system.vercel.app'),
   title: {
     default: 'ParkCore | ARM Cortex-M3 Parking Simulator',
     template: '%s | ParkCore',
@@ -24,6 +25,13 @@ export const metadata: Metadata = {
     title: 'ParkCore | ARM Cortex-M3 Parking Simulator',
     description: 'Live state machine + slot-grid simulator for an LPC1768 parking system — watch flags, fee calc, and bubble sort run in real time.',
     type: 'website',
+    images: [{ url: '/banner.png', width: 1600, height: 400, alt: 'ParkCore banner' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ParkCore | ARM Cortex-M3 Parking Simulator',
+    description: 'Live state machine + slot-grid simulator for an LPC1768 parking system.',
+    images: ['/banner.png'],
   },
 }
 

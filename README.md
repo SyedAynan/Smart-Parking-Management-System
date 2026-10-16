@@ -1,5 +1,14 @@
 # ParkCore — Smart Parking Management Simulator
 
+> **Banner:** generate one with the prompt in [`BANNER-PROMPT.md`](BANNER-PROMPT.md),
+> save it as `public/banner.png`, and push — uncomment the header below to show it:
+>
+> ```html
+> <p align="center">
+>   <img src="public/banner.png" alt="ParkCore — ARM Cortex-M3 parking simulator banner" width="100%">
+> </p>
+> ```
+
 Interactive web dashboard simulating an **ARM Cortex-M3 (LPC1768)** parking management system. Built with Next.js 16, React 19, TypeScript, and Tailwind CSS 4.
 
 ## Features
