@@ -49,10 +49,11 @@ export function ParkingDashboard() {
         <div>
           <h1 className="text-xl md:text-2xl font-bold flex items-center gap-2">
             <Cpu className="h-6 w-6 text-cyan-400" />
-            Smart Parking Management System
+            ParkCore
+            <span className="text-muted-foreground font-normal">| Smart Parking Simulator</span>
           </h1>
           <p className="text-sm text-muted-foreground">
-            ARM Microcontroller Simulation | Keil uVision Debug Dashboard
+            ARM Cortex-M3 (LPC1768) · Keil uVision Debug Dashboard · 32-slot state machine
           </p>
         </div>
         <div className="flex items-center gap-2 flex-wrap">

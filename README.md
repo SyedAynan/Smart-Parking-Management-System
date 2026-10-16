@@ -1,6 +1,6 @@
-# Smart Parking Management System — ARM Cortex-M3 Simulator
+# ParkCore — Smart Parking Management Simulator
 
-Interactive web dashboard simulating an ARM Cortex-M3 (LPC1768) parking management system. Built with Next.js 16, React 19, TypeScript, and Tailwind CSS 4.
+Interactive web dashboard simulating an **ARM Cortex-M3 (LPC1768)** parking management system. Built with Next.js 16, React 19, TypeScript, and Tailwind CSS 4.
 
 ## Features
 

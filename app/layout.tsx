@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
@@ -7,26 +7,28 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Smart Parking Management System | ARM Simulation',
-  description: 'Interactive ARM Cortex-M3 microcontroller simulation for smart parking management with live debug dashboard, state machine visualization, and Keil uVision source code.',
-  generator: 'v0.app',
+  title: {
+    default: 'ParkCore | ARM Cortex-M3 Parking Simulator',
+    template: '%s | ParkCore',
+  },
+  description:
+    'Interactive ARM Cortex-M3 (LPC1768) smart parking simulator — 32-slot state machine, live debug dashboard, flag monitor, and Keil uVision C source viewer.',
+  applicationName: 'ParkCore',
+  keywords: ['ARM', 'Cortex-M3', 'LPC1768', 'Keil uVision', 'embedded', 'state machine', 'parking', 'simulator'],
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    shortcut: '/icon.svg',
     apple: '/apple-icon.png',
   },
+  openGraph: {
+    title: 'ParkCore | ARM Cortex-M3 Parking Simulator',
+    description: 'Live state machine + slot-grid simulator for an LPC1768 parking system — watch flags, fee calc, and bubble sort run in real time.',
+    type: 'website',
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#06b6d4',
 }
 
 export default function RootLayout({
