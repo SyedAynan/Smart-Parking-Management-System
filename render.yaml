@@ -1,0 +1,25 @@
+# ============================================================
+# File: render.yaml
+#
+# Purpose:
+#     Render Blueprint — Smart Parking Management System.
+#     Single FastAPI service; SQLite db lives on Render's ephemeral
+#     disk (data resets on redeploy — fine for a demo).
+#
+# Docs: https://render.com/docs/blueprint-spec
+# ============================================================
+
+services:
+  - type: web
+    name: smart-parking
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r requirements.txt && pip install -e .
+    # -e . registers src/parking as an installed package so
+    # `parking.main:app` resolves without PYTHONPATH hacks.
+    startCommand: uvicorn parking.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PARKING_DB_PATH
+        value: parking.db   # ephemeral SQLite on Render's disk
+    healthCheckPath: /api/lots   # lightweight endpoint, no auth needed
