@@ -10,6 +10,8 @@ import { EventLogView } from '@/components/event-log-view';
 import { DataViewPanel } from '@/components/data-view-panel';
 import { ControlPanel } from '@/components/control-panel';
 import { SourceCodeViewer } from '@/components/source-code-viewer';
+import { AnimatedBarrierGate } from '@/components/animated-barrier-gate';
+import { MicrochipBadge } from '@/components/vehicle-visuals';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
@@ -48,7 +50,7 @@ export function ParkingDashboard() {
       <div className="mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-xl md:text-2xl font-bold flex items-center gap-2">
-            <Cpu className="h-6 w-6 text-cyan-400" />
+            <MicrochipBadge className="h-7 w-7" />
             ParkCore
             <span className="text-muted-foreground font-normal">| Smart Parking Simulator</span>
           </h1>
@@ -115,8 +117,14 @@ export function ParkingDashboard() {
               />
             </div>
 
-            {/* Center Column - Parking Grid & Events */}
+            {/* Center Column - Barrier Gate, Parking Grid & Events */}
             <div className="lg:col-span-6 space-y-4">
+              <AnimatedBarrierGate
+                currentState={state.system.currentState}
+                lastEvent={state.system.eventLog[0]}
+                simTime={state.system.simTime}
+              />
+
               <Card className="bg-muted/30 border-border">
                 <CardHeader className="p-3 pb-2">
                   <CardTitle className="text-sm">Parking Lot (32 Slots)</CardTitle>

@@ -5,7 +5,8 @@ import { generateAllSourceFiles } from '@/lib/keil-source-generator';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Download, Copy, Check, FileCode } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Download, Copy, Check, FileCode, Terminal, Cpu } from 'lucide-react';
 
 export function SourceCodeViewer() {
   const [copiedFile, setCopiedFile] = useState<string | null>(null);
@@ -49,7 +50,25 @@ export function SourceCodeViewer() {
           </Button>
         </div>
       </CardHeader>
-      <CardContent className="p-3 pt-0">
+      <CardContent className="p-3 pt-0 space-y-3">
+        {/* Compiler Status Bar */}
+        <div className="flex flex-wrap items-center justify-between gap-2 p-2 rounded-md bg-black/40 border border-border/40 text-[11px] font-mono">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <Terminal className="h-3.5 w-3.5 text-cyan-400" />
+            <span className="text-muted-foreground">Target:</span>
+            <span className="text-cyan-300 font-semibold">ARM Cortex-M3 (NXP LPC1768)</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Badge variant="outline" className="text-[10px] bg-slate-900 border-slate-700 text-emerald-400">
+              BUILD: READY (0 ERR, 0 WARN)
+            </Badge>
+            <Badge variant="outline" className="text-[10px] bg-slate-900 border-slate-700 text-slate-300">
+              FLASH: 512 KB · RAM: 64 KB
+            </Badge>
+          </div>
+        </div>
+
         <Tabs defaultValue={files[0].name}>
           <TabsList className="w-full grid grid-cols-4 h-8">
             {files.map((file) => (

@@ -1,8 +1,9 @@
 'use client';
 
-import { ParkingSlot, SlotStatus } from '@/lib/parking-system';
+import { ParkingSlot, SlotStatus, VehicleType } from '@/lib/parking-system';
 import { cn } from '@/lib/utils';
 import { Car, Bike, Truck, Wrench } from 'lucide-react';
+import { VehicleVisual } from '@/components/vehicle-visuals';
 
 interface ParkingSlotGridProps {
   slots: ParkingSlot[];
@@ -23,17 +24,9 @@ function getSlotColor(status: SlotStatus): string {
   }
 }
 
-function getVehicleIcon(vehicleType: string | null) {
-  switch (vehicleType) {
-    case 'CAR':
-      return <Car className="h-3 w-3" />;
-    case 'BIKE':
-      return <Bike className="h-3 w-3" />;
-    case 'TRUCK':
-      return <Truck className="h-3 w-3" />;
-    default:
-      return null;
-  }
+function getVehicleIcon(vehicleType: VehicleType | null) {
+  if (!vehicleType) return null;
+  return <VehicleVisual type={vehicleType} className="h-3.5 w-6 my-0.5" />;
 }
 
 export function ParkingSlotGrid({ slots, onSlotClick, highlightedSlot }: ParkingSlotGridProps) {

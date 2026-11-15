@@ -1,6 +1,7 @@
 'use client';
 
 import { VehicleType } from '@/lib/parking-system';
+import { VehicleVisual } from '@/components/vehicle-visuals';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
@@ -127,27 +128,27 @@ export function ControlPanel({
             size="sm"
             variant="outline"
             onClick={() => onManualEntry('CAR')}
-            className="w-full justify-start"
+            className="w-full justify-start gap-2"
           >
-            <Car className="h-4 w-4 mr-2 text-blue-400" />
+            <VehicleVisual type="CAR" className="h-4 w-7" />
             Park Car ($20/hr)
           </Button>
           <Button
             size="sm"
             variant="outline"
             onClick={() => onManualEntry('BIKE')}
-            className="w-full justify-start"
+            className="w-full justify-start gap-2"
           >
-            <Bike className="h-4 w-4 mr-2 text-green-400" />
+            <VehicleVisual type="BIKE" className="h-4 w-7" />
             Park Bike ($10/hr)
           </Button>
           <Button
             size="sm"
             variant="outline"
             onClick={() => onManualEntry('TRUCK')}
-            className="w-full justify-start"
+            className="w-full justify-start gap-2"
           >
-            <Truck className="h-4 w-4 mr-2 text-purple-400" />
+            <VehicleVisual type="TRUCK" className="h-4 w-7" />
             Park Truck ($40/hr)
           </Button>
         </CardContent>
