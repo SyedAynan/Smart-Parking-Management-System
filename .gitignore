@@ -13,6 +13,23 @@ dist/
 *.tsbuildinfo
 next-env.d.ts
 
+# Large Media & Video Renders (Stored locally or on S:\ drive)
+*.mp4
+*.mkv
+*.avi
+*.wav
+*.ass
+*.srt
+deliverables/
+raw_recordings/
+temp_video/
+.archify/
+
+# Temporary scratch recordings & debug artifacts
+toll_plaza_current.png
+debug_tab_view.png
+test_1080p_layout.png
+
 # Env files
 .env
 .env.local
@@ -40,9 +57,8 @@ Thumbs.db
 
 # Misc
 *.pem
-.DS_Store
 
-# Python (kept — repo history has Python)
+# Python (kept â€” repo history has Python)
 __pycache__/
 *.py[cod]
 *$py.class

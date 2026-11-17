@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ParkCore 4:5 Authentic Thumbnail</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #060911;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #F8FAFC;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    .thumb-4x5 {
+      width: 1080px;
+      height: 1350px;
+      position: relative;
+      background: #070B14;
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.18) 0%, rgba(16, 185, 129, 0.08) 45%, transparent 75%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 40px 40px, 40px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 48px 40px 40px 40px;
+    }
+
+    .header {
+      width: 100%;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.45);
+      color: #22D3EE;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 12px;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22D3EE;
+      box-shadow: 0 0 8px #22D3EE;
+    }
+
+    .main-title {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      color: #FFFFFF;
+      margin-bottom: 10px;
+    }
+
+    .main-title .gradient-text {
+      background: linear-gradient(135deg, #38BDF8 0%, #22D3EE 50%, #34D399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      font-weight: 500;
+      color: #94A3B8;
+      line-height: 1.45;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .subtitle strong {
+      color: #E2E8F0;
+    }
+
+    /* Window Chrome */
+    .window-container {
+      width: 100%;
+      background: #0B0F19;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 
+        0 20px 50px -10px rgba(0, 0, 0, 0.9),
+        0 0 35px rgba(6, 182, 212, 0.22);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
+    }
+
+    .window-titlebar {
+      height: 34px;
+      background: #0F1626;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      position: relative;
+    }
+
+    .traffic-lights {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .traffic-light {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .traffic-light.close { background: #EF4444; }
+    .traffic-light.min { background: #F59E0B; }
+    .traffic-light.max { background: #10B981; }
+
+    .window-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: #64748B;
+      letter-spacing: 0.04em;
+    }
+
+    .window-title-accent {
+      color: #38BDF8;
+    }
+
+    .window-body {
+      width: 100%;
+      background: #000;
+    }
+
+    .window-body img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    /* Bottom Architecture Matrix */
+    .bottom-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      width: 100%;
+    }
+
+    .spec-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #CBD5E1;
+    }
+
+    .spec-card.cyan {
+      border-color: rgba(6, 182, 212, 0.4);
+      background: rgba(6, 182, 212, 0.08);
+      color: #38BDF8;
+    }
+
+    .spec-card.green {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.08);
+      color: #34D399;
+    }
+
+    .spec-card.amber {
+      border-color: rgba(245, 158, 11, 0.4);
+      background: rgba(245, 158, 11, 0.08);
+      color: #FBBF24;
+    }
+
+    .spec-card.blue {
+      border-color: rgba(99, 102, 241, 0.4);
+      background: rgba(99, 102, 241, 0.08);
+      color: #A5B4FC;
+    }
+
+    .footer-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #64748B;
+    }
+
+    .footer-highlight {
+      color: #10B981;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="thumb-4x5">
+    
+    <!-- Header -->
+    <div class="header">
+      <div class="pill-tag">
+        <span class="pill-dot"></span>
+        ARM Cortex-M3 Firmware &bull; 100MHz PLL0
+      </div>
+      <h1 class="main-title">
+        ParkCore: <span class="gradient-text">Autonomous Smart Parking</span>
+      </h1>
+      <p class="subtitle">
+        Bare-metal <strong>LPC1768 C firmware</strong> synchronized with real-time <strong>Next.js digital twin</strong> &amp; 50Hz PWM servo boom gates
+      </p>
+    </div>
+
+    <!-- Real User Screenshot in Dev Window Chrome -->
+    <div class="window-container">
+      <div class="window-titlebar">
+        <div class="traffic-lights">
+          <div class="traffic-light close"></div>
+          <div class="traffic-light min"></div>
+          <div class="traffic-light max"></div>
+        </div>
+        <div class="window-title">
+          <span>parkcore-dashboard</span>
+          <span>&bull;</span>
+          <span class="window-title-accent">LPC1768 Keil uVision Live Simulation</span>
+        </div>
+      </div>
+      <div class="window-body">
+        <img src="S:/user_parkcore_screenshot.jpg" alt="ParkCore Smart Parking Simulator">
+      </div>
+    </div>
+
+    <!-- Bottom Specs Grid -->
+    <div class="bottom-section">
+      <div class="specs-grid">
+        <div class="spec-card cyan">
+          <span>⚡</span>
+          <span>14-State Deterministic FSM</span>
+        </div>
+        <div class="spec-card green">
+          <span>🕹️</span>
+          <span>50Hz PWM1.1 Servo Boom Gates</span>
+        </div>
+        <div class="spec-card amber">
+          <span>📊</span>
+          <span>32-Bay Bitmapped Telemetry</span>
+        </div>
+        <div class="spec-card blue">
+          <span>📡</span>
+          <span>Optical IR Beam (GPIO P0.4)</span>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <span>ARCH: NXP LPC1768 &bull; KEIL RTX</span>
+        <span class="footer-highlight">&bull; VERIFIED NON-AI AUTHENTIC SYSTEM</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

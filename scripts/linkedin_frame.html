@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1728px;
+      height: 2160px;
+      background: #020617;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #F8FAFC;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ambient Cyber Background Glows */
+    .glow-cyan {
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.22) 0%, rgba(2, 6, 23, 0) 70%);
+      pointer-events: none;
+    }
+    .glow-blue {
+      position: absolute;
+      bottom: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1100px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(2, 6, 23, 0) 70%);
+      pointer-events: none;
+    }
+
+    /* TOP HEADER SECTION (0 - 540px) */
+    .header-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1728px;
+      height: 540px;
+      padding: 64px 80px 30px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-bottom: 2px solid rgba(56, 189, 248, 0.25);
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(2, 6, 23, 0.95) 100%);
+    }
+
+    .top-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(34, 211, 238, 0.12);
+      border: 1.5px solid #22D3EE;
+      color: #22D3EE;
+      padding: 8px 22px;
+      border-radius: 9999px;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.35);
+    }
+    .pill-badge .dot {
+      width: 12px;
+      height: 12px;
+      background: #22D3EE;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #22D3EE;
+    }
+
+    .meta-specs {
+      font-family: monospace;
+      font-size: 22px;
+      color: #94A3B8;
+      display: flex;
+      gap: 24px;
+    }
+    .meta-specs span {
+      color: #38BDF8;
+      font-weight: bold;
+    }
+
+    .title-row {
+      margin-top: 10px;
+    }
+    .main-title {
+      font-size: 58px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      background: linear-gradient(135deg, #FFFFFF 30%, #BAE6FD 70%, #38BDF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .sub-title {
+      font-size: 28px;
+      color: #94A3B8;
+      margin-top: 12px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .tech-pills {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .tech-pill {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1.5px solid rgba(148, 163, 184, 0.3);
+      padding: 6px 18px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: 700;
+      font-family: monospace;
+      color: #E2E8F0;
+    }
+    .tech-pill.cyan { border-color: #06B6D4; color: #22D3EE; }
+    .tech-pill.emerald { border-color: #10B981; color: #34D399; }
+    .tech-pill.amber { border-color: #F59E0B; color: #FBBF24; }
+    .tech-pill.purple { border-color: #A855F7; color: #C084FC; }
+
+    /* MIDDLE VIDEO FRAME WINDOW (y: 540 to 1512px) */
+    .video-frame-border {
+      position: absolute;
+      top: 538px;
+      left: 0;
+      width: 1728px;
+      height: 976px;
+      border-top: 2px solid #06B6D4;
+      border-bottom: 2px solid #06B6D4;
+      box-shadow: 0 0 40px rgba(6, 182, 212, 0.35);
+      pointer-events: none;
+      z-index: 10;
+    }
+    .video-corner {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      border-color: #22D3EE;
+      border-style: solid;
+    }
+    .tl { top: 12px; left: 16px; border-width: 4px 0 0 4px; }
+    .tr { top: 12px; right: 16px; border-width: 4px 4px 0 0; }
+    .bl { bottom: 12px; left: 16px; border-width: 0 0 4px 4px; }
+    .br { bottom: 12px; right: 16px; border-width: 0 4px 4px 0; }
+
+    /* BOTTOM SUBTITLE & FOOTER CARD (1512 - 2160px) */
+    .footer-container {
+      position: absolute;
+      top: 1512px;
+      left: 0;
+      width: 1728px;
+      height: 648px;
+      padding: 40px 80px 50px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-top: 2px solid rgba(56, 189, 248, 0.25);
+      background: linear-gradient(180deg, rgba(2, 6, 23, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+    }
+
+    .bottom-placeholder {
+      /* Subtitles will sit right in this area */
+      height: 400px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .author-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #06B6D4, #3B82F6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 900;
+      color: #FFFFFF;
+      box-shadow: 0 0 16px rgba(6, 182, 212, 0.6);
+    }
+    .author-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .author-name {
+      font-size: 26px;
+      font-weight: 800;
+      color: #F8FAFC;
+    }
+    .author-role {
+      font-size: 20px;
+      color: #94A3B8;
+    }
+
+    .cta-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(34, 197, 94, 0.15);
+      border: 1.5px solid #22C55E;
+      color: #4ADE80;
+      padding: 10px 24px;
+      border-radius: 12px;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-cyan"></div>
+  <div class="glow-blue"></div>
+
+  <!-- TOP HEADER -->
+  <div class="header-container">
+    <div class="top-meta-row">
+      <div class="pill-badge">
+        <span class="dot"></span>
+        <span>LINKEDIN TECH SHOWCASE</span>
+      </div>
+      <div class="meta-specs">
+        <div>CORE: <span>ARM CORTEX-M3</span></div>
+        <div>CLOCK: <span>100MHz PLL0</span></div>
+        <div>FPS: <span>60.00</span></div>
+      </div>
+    </div>
+
+    <div class="title-row">
+      <h1 class="main-title">ParkCore: Autonomous Smart Parking System</h1>
+      <p class="sub-title">14-State FSM Microcontroller Firmware & Real-Time Digital Twin Simulation</p>
+    </div>
+
+    <div class="tech-pills">
+      <span class="tech-pill cyan">LPC1768 BARE-METAL</span>
+      <span class="tech-pill emerald">14-STATE DETERMINISTIC FSM</span>
+      <span class="tech-pill amber">50Hz PWM SERVO BOOM GATES</span>
+      <span class="tech-pill purple">NEXT.JS DIGITAL TWIN</span>
+    </div>
+  </div>
+
+  <!-- VIDEO WINDOW OVERLAY BORDER -->
+  <div class="video-frame-border">
+    <div class="video-corner tl"></div>
+    <div class="video-corner tr"></div>
+    <div class="video-corner bl"></div>
+    <div class="video-corner br"></div>
+  </div>
+
+  <!-- BOTTOM SECTION -->
+  <div class="footer-container">
+    <div class="bottom-placeholder">
+      <!-- Subtitle ASS will render here -->
+    </div>
+
+    <div class="footer-bar">
+      <div class="author-info">
+        <div class="author-avatar">P</div>
+        <div class="author-text">
+          <span class="author-name">ParkCore Infrastructure Engine</span>
+          <span class="author-role">Dual-Gate Toll Plaza · 32-Bay Telemetry · Hardware Registers</span>
+        </div>
+      </div>
+      <div class="cta-badge">
+        <span>? FULL CODE & DOCS ON GITHUB</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

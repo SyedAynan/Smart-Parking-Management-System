@@ -1,0 +1,4781 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 6,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 2 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "S:\\Smart-Parking-Management-System\\parkcore-explainer\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 4 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "S:\\Smart-Parking-Management-System\\parkcore-explainer\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 12 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "S:\\Smart-Parking-Management-System\\parkcore-explainer\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 10 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "S:\\Smart-Parking-Management-System\\parkcore-explainer\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "composition_file_too_large",
+        "severity": "warning",
+        "message": "This HTML composition file has 1107 lines. Smaller sub-compositions are easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "S:\\Smart-Parking-Management-System\\parkcore-explainer\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split coherent scenes or layers into separate .html files under compositions/, then mount them from the parent with data-composition-src so each file stays small enough to inspect, revise, and validate independently."
+      },
+      {
+        "code": "composition_heavy_overlay_count_high",
+        "severity": "warning",
+        "message": "This composition has 34 elements carrying \"heavy overlay\" CSS (filter:blur, radial-gradient, or clip-path). Field signal: a composition with ~40 such elements (including opacity:0 / visibility:hidden ones) captures solid-black for the first ~half of the render, recovering near the end. Reproduces identically via drawElement, forced screenshot capture, and snapshot, so the capture layer itself is the offender (not encoder/mux). Independent of duration. Presence alone matters; only display:none elements are excluded here.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "S:\\Smart-Parking-Management-System\\parkcore-explainer\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split coherent scenes / transitions into separate .html files under compositions/ and concat the pieces (FFmpeg or the runtime's slideshow) so each capture only sees a small subset of heavy overlays at once. Even hidden overlays (opacity:0 / visibility:hidden) contribute: either remove truly unused ones from the source or scope them into their own per-transition sub-composition. If an overlay is genuinely inert for the whole clip, use display:none so it never enters the render tree. Field ref ts=1784040753 (#hyperframes-cli-feedback)."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 70,
+    "findings": [
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#node-fsm_engine > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 4189.82,
+          "top": 615.87,
+          "right": 4473.18,
+          "bottom": 653.08,
+          "width": 283.36,
+          "height": 37.21
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "FSM State Machine",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "right": 633.18
+        },
+        "dataAttributes": {
+          "data-node-label": "",
+          "data-detail-anchor": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 4189.82,
+          "y": 615.87,
+          "width": 283.36,
+          "height": 37.21
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 2.511,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.511
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#node-fsm_engine > text:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 4227.33,
+          "top": 664.54,
+          "right": 4435.67,
+          "bottom": 696.02,
+          "width": 208.34,
+          "height": 31.48
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "14 System States",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "right": 595.67
+        },
+        "dataAttributes": {
+          "data-detail": "context"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 4227.33,
+          "y": 664.54,
+          "width": 208.34,
+          "height": 31.48
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 2.511,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.511
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#node-allocation > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 4204.99,
+          "top": 902.13,
+          "right": 4458.01,
+          "bottom": 939.34,
+          "width": 253.02,
+          "height": 37.21
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Slot & Fee Engine",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "right": 618.01
+        },
+        "dataAttributes": {
+          "data-node-label": "",
+          "data-detail-anchor": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 4204.99,
+          "y": 902.13,
+          "width": 253.02,
+          "height": 37.21
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 2.511,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.511
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#node-allocation > text:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 4201.39,
+          "top": 950.79,
+          "right": 4461.61,
+          "bottom": 982.28,
+          "width": 260.22,
+          "height": 31.49
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Slot Lookup & Pricing",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "right": 621.61
+        },
+        "dataAttributes": {
+          "data-detail": "context"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 4201.39,
+          "y": 950.79,
+          "width": 260.22,
+          "height": 31.49
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 2.511,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.511
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#node-system_state > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 4142.21,
+          "top": 1185.53,
+          "right": 4520.79,
+          "bottom": 1225.6,
+          "width": 378.58,
+          "height": 40.07
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "In-Memory System State",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "right": 680.79
+        },
+        "dataAttributes": {
+          "data-node-label": "",
+          "data-detail-anchor": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 4142.21,
+          "y": 1185.53,
+          "width": 378.58,
+          "height": 40.07
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 2.511,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.511
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#node-system_state > text:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 4189.87,
+          "top": 1237.05,
+          "right": 4473.13,
+          "bottom": 1268.54,
+          "width": 283.26,
+          "height": 31.49
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "ParkingSystem_t Struct",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "right": 633.13
+        },
+        "dataAttributes": {
+          "data-detail": "context"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 4189.87,
+          "y": 1237.05,
+          "width": 283.26,
+          "height": 31.49
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 2.511,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.511
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#node-keil_gen > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 4201.54,
+          "top": 1480.38,
+          "right": 4461.46,
+          "bottom": 1509,
+          "width": 259.92,
+          "height": 28.62
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Keil Source Generator",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "right": 621.46
+        },
+        "dataAttributes": {
+          "data-node-label": "",
+          "data-detail-anchor": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 4201.54,
+          "y": 1480.38,
+          "width": 259.92,
+          "height": 28.62
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 2.511,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.511
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#node-keil_gen > text:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 4164.49,
+          "top": 1523.31,
+          "right": 4498.51,
+          "bottom": 1554.8,
+          "width": 334.02,
+          "height": 31.49
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "LPC1768 C Code Generator",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "right": 658.51
+        },
+        "dataAttributes": {
+          "data-detail": "context"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 4164.49,
+          "y": 1523.31,
+          "width": 334.02,
+          "height": 31.49
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 2.511,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.511
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(40) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 3893.41,
+          "top": 633.05,
+          "right": 4051.08,
+          "bottom": 661.67,
+          "width": 157.67,
+          "height": 28.62
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "tick transitions",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "right": 211.08
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 3893.41,
+          "y": 633.05,
+          "width": 157.67,
+          "height": 28.62
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 2.511,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.511
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(41) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 4044.91,
+          "top": 1068.16,
+          "right": 4141.47,
+          "bottom": 1096.79,
+          "width": 96.56,
+          "height": 28.63
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "allocates",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "right": 301.47
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 4044.91,
+          "y": 1068.16,
+          "width": 96.56,
+          "height": 28.63
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 2.511,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.511
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(42) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 3899.05,
+          "top": 1291.44,
+          "right": 4045.44,
+          "bottom": 1320.07,
+          "width": 146.39,
+          "height": 28.63
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "mutates state",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "right": 205.44
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 3899.05,
+          "y": 1291.44,
+          "width": 146.39,
+          "height": 28.63
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 2.511,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.511
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(43) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 4379.19,
+          "top": 1065.3,
+          "right": 4511.67,
+          "bottom": 1093.92,
+          "width": 132.48,
+          "height": 28.62
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "slot updates",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "right": 671.67
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 4379.19,
+          "y": 1065.3,
+          "width": 132.48,
+          "height": 28.62
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 2.511,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.511
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(45) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 4594.05,
+          "top": 1457.47,
+          "right": 4755.97,
+          "bottom": 1486.1,
+          "width": 161.92,
+          "height": 28.63
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "exports source",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "right": 915.97
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 4594.05,
+          "y": 1457.47,
+          "width": 161.92,
+          "height": 28.63
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 2.511,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.511
+        ]
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(47) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 3714.61,
+          "top": 530,
+          "right": 4065.41,
+          "bottom": 550.03,
+          "width": 350.8,
+          "height": 20.03
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Simulation & Emulation Core",
+        "fixHint": "Text is 351px x 20px inside 3840px x 2160px and overflows by up to 225px; widen the container to at least ~4065px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "right": 225.41
+        },
+        "dataAttributes": {
+          "data-boundary-label": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 3714.61,
+          "y": 530,
+          "width": 350.8,
+          "height": 20.03
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 2.511,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.511
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(47) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 3714.61,
+          "top": 524.27,
+          "right": 4065.41,
+          "bottom": 555.76,
+          "width": 350.8,
+          "height": 31.49
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Simulation & Emulation Core",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "right": 225.41
+        },
+        "dataAttributes": {
+          "data-boundary-label": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 3714.61,
+          "y": 524.27,
+          "width": 350.8,
+          "height": 31.49
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 2.511,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.511
+        ]
+      },
+      {
+        "code": "connector_detached",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(1) > path:nth-of-type(2)",
+        "message": "Connector path endpoints render 190px from the nearest anchorable element — a marked shaft that meets no node.",
+        "rect": {
+          "left": 2005.64,
+          "top": 1119.69,
+          "right": 2206.02,
+          "bottom": 1119.69,
+          "width": 200.38,
+          "height": 0
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Measure the settled node boxes and write `d` in the SVG's user space (invert getScreenCTM), or grow a layout-owned shaft from the source node.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead-emphasis)\",\"after\":\"url(#arrowhead-emphasis)\"}]",
+          "data-edge-from": "operator",
+          "data-edge-to": "dashboard",
+          "data-edge-label": "interacts",
+          "data-edge-key": "0",
+          "data-edge-id": "operator-dashboard",
+          "data-composition-points": "170,272;240,272",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 2005.64,
+          "y": 1119.69,
+          "width": 200.38,
+          "height": 0
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 42.689,
+        "occurrences": 9,
+        "heldMs": 0,
+        "times": [
+          2.511,
+          7.533,
+          12.556,
+          17.578,
+          22.6,
+          27.622,
+          32.644,
+          37.667,
+          42.689
+        ]
+      },
+      {
+        "code": "connector_detached",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(2) > path:nth-of-type(2)",
+        "message": "Connector path endpoints render 101px from the nearest anchorable element, but the path's user-space coordinates would attach if read as screen pixels — screen/viewport numbers were likely written into SVG `d` without inverting the CTM.",
+        "rect": {
+          "left": 2406.4,
+          "top": 541.44,
+          "right": 2778.54,
+          "bottom": 1028.08,
+          "width": 372.14,
+          "height": 486.64
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Convert measured screen coordinates into the SVG's user space (subtract the SVG rect / invert getScreenCTM) before writing path `d`, and keep the SVG a direct child of the stage.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "dashboard",
+          "data-edge-to": "barrier_gate",
+          "data-edge-label": "mounts",
+          "data-edge-key": "1",
+          "data-edge-id": "dashboard-barrier",
+          "data-composition-points": "310,240;310,70;440,70",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 2406.4,
+          "y": 541.44,
+          "width": 372.14,
+          "height": 486.64
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 42.689,
+        "occurrences": 7,
+        "heldMs": 0,
+        "times": [
+          2.511,
+          12.556,
+          17.578,
+          22.6,
+          27.622,
+          32.644,
+          42.689
+        ]
+      },
+      {
+        "code": "connector_detached",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(5) > path:nth-of-type(2)",
+        "message": "Connector path endpoints render 296px from the nearest anchorable element — a marked shaft that meets no node.",
+        "rect": {
+          "left": 2606.79,
+          "top": 1125.41,
+          "right": 2824.34,
+          "bottom": 1199.84,
+          "width": 217.56,
+          "height": 74.43
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Measure the settled node boxes and write `d` in the SVG's user space (invert getScreenCTM), or grow a layout-owned shaft from the source node.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "dashboard",
+          "data-edge-to": "telemetry",
+          "data-edge-label": "mounts",
+          "data-edge-key": "4",
+          "data-edge-id": "dashboard-telemetry",
+          "data-composition-points": "380,274;456,274;456,300",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 2606.79,
+          "y": 1125.41,
+          "width": 217.56,
+          "height": 74.43
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 42.689,
+        "occurrences": 8,
+        "heldMs": 0,
+        "times": [
+          2.511,
+          7.533,
+          17.578,
+          22.6,
+          27.622,
+          32.644,
+          37.667,
+          42.689
+        ]
+      },
+      {
+        "code": "connector_detached",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(6) > path:nth-of-type(2)",
+        "message": "Connector path endpoints render 332px from the nearest anchorable element — a marked shaft that meets no node.",
+        "rect": {
+          "left": 2560.98,
+          "top": 1211.29,
+          "right": 2778.54,
+          "bottom": 1503.28,
+          "width": 217.56,
+          "height": 291.98
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Measure the settled node boxes and write `d` in the SVG's user space (invert getScreenCTM), or grow a layout-owned shaft from the source node.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "dashboard",
+          "data-edge-to": "code_viewer",
+          "data-edge-label": "mounts",
+          "data-edge-key": "5",
+          "data-edge-id": "dashboard-viewer",
+          "data-composition-points": "364,304;364,406;440,406",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 2560.98,
+          "y": 1211.29,
+          "width": 217.56,
+          "height": 291.98
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 42.689,
+        "occurrences": 9,
+        "heldMs": 0,
+        "times": [
+          2.511,
+          7.533,
+          12.556,
+          17.578,
+          22.6,
+          27.622,
+          32.644,
+          37.667,
+          42.689
+        ]
+      },
+      {
+        "code": "connector_detached",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(7) > path:nth-of-type(2)",
+        "message": "Connector path endpoints render 302px from the nearest anchorable element, but the path's user-space coordinates would attach if read as screen pixels — screen/viewport numbers were likely written into SVG `d` without inverting the CTM.",
+        "rect": {
+          "left": 3207.93,
+          "top": 507.09,
+          "right": 3680.26,
+          "bottom": 1028.08,
+          "width": 472.33,
+          "height": 520.99
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Convert measured screen coordinates into the SVG's user space (subtract the SVG rect / invert getScreenCTM) before writing path `d`, and keep the SVG a direct child of the stage.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "sim_hook",
+          "data-edge-to": "barrier_gate",
+          "data-edge-label": "servo & IR events",
+          "data-edge-key": "6",
+          "data-edge-id": "sim-barrier",
+          "data-composition-points": "755,240;755,58;590,58",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 3207.93,
+          "y": 507.09,
+          "width": 472.33,
+          "height": 520.99
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 42.689,
+        "occurrences": 6,
+        "heldMs": 0,
+        "times": [
+          2.511,
+          12.556,
+          17.578,
+          27.622,
+          32.644,
+          42.689
+        ]
+      },
+      {
+        "code": "connector_detached",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(8) > path:nth-of-type(2)",
+        "message": "Connector path endpoints render 560px from the nearest anchorable element, but the path's user-space coordinates would attach if read as screen pixels — screen/viewport numbers were likely written into SVG `d` without inverting the CTM.",
+        "rect": {
+          "left": 3207.93,
+          "top": 764.73,
+          "right": 3640.18,
+          "bottom": 1028.08,
+          "width": 432.25,
+          "height": 263.36
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Convert measured screen coordinates into the SVG's user space (subtract the SVG rect / invert getScreenCTM) before writing path `d`, and keep the SVG a direct child of the stage.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "controls",
+          "data-edge-to": "sim_hook",
+          "data-edge-label": "start / step / reset",
+          "data-edge-key": "7",
+          "data-edge-id": "controls-sim",
+          "data-composition-points": "590,148;741,148;741,240",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 3207.93,
+          "y": 764.73,
+          "width": 432.25,
+          "height": 263.36
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 42.689,
+        "occurrences": 8,
+        "heldMs": 0,
+        "times": [
+          2.511,
+          7.533,
+          12.556,
+          22.6,
+          27.622,
+          32.644,
+          37.667,
+          42.689
+        ]
+      },
+      {
+        "code": "connector_detached",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(10) > path:nth-of-type(2)",
+        "message": "Connector path endpoints render 824px from the nearest anchorable element — a marked shaft that meets no node.",
+        "rect": {
+          "left": 3162.13,
+          "top": 1165.49,
+          "right": 3465.56,
+          "bottom": 1199.84,
+          "width": 303.44,
+          "height": 34.35
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Measure the settled node boxes and write `d` in the SVG's user space (invert getScreenCTM), or grow a layout-owned shaft from the source node.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "sim_hook",
+          "data-edge-to": "telemetry",
+          "data-edge-label": "state stream",
+          "data-edge-key": "9",
+          "data-edge-id": "sim-telemetry",
+          "data-composition-points": "680,288;574,288;574,300",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 3162.13,
+          "y": 1165.49,
+          "width": 303.44,
+          "height": 34.35
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 42.689,
+        "occurrences": 8,
+        "heldMs": 0,
+        "times": [
+          2.511,
+          7.533,
+          17.578,
+          22.6,
+          27.622,
+          32.644,
+          37.667,
+          42.689
+        ]
+      },
+      {
+        "code": "connector_detached",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(11) > path:nth-of-type(2)",
+        "message": "Connector path endpoints render 597px from the nearest anchorable element, but the path's user-space coordinates would attach if read as screen pixels — screen/viewport numbers were likely written into SVG `d` without inverting the CTM.",
+        "rect": {
+          "left": 3849.15,
+          "top": 684.57,
+          "right": 4095.34,
+          "bottom": 1028.08,
+          "width": 246.18,
+          "height": 343.51
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Convert measured screen coordinates into the SVG's user space (subtract the SVG rect / invert getScreenCTM) before writing path `d`, and keep the SVG a direct child of the stage.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "sim_hook",
+          "data-edge-to": "fsm_engine",
+          "data-edge-label": "tick transitions",
+          "data-edge-key": "10",
+          "data-edge-id": "sim-fsm",
+          "data-composition-points": "814,240;814,120;900,120",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 3849.15,
+          "y": 684.57,
+          "width": 246.18,
+          "height": 343.51
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 42.689,
+        "occurrences": 8,
+        "heldMs": 0,
+        "times": [
+          2.511,
+          7.533,
+          12.556,
+          17.578,
+          22.6,
+          32.644,
+          37.667,
+          42.689
+        ]
+      },
+      {
+        "code": "connector_detached",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(13) > path:nth-of-type(2)",
+        "message": "Connector path endpoints render 836px from the nearest anchorable element — a marked shaft that meets no node.",
+        "rect": {
+          "left": 3849.15,
+          "top": 1211.29,
+          "right": 4095.34,
+          "bottom": 1257.09,
+          "width": 246.18,
+          "height": 45.8
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Measure the settled node boxes and write `d` in the SVG's user space (invert getScreenCTM), or grow a layout-owned shaft from the source node.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "sim_hook",
+          "data-edge-to": "system_state",
+          "data-edge-label": "mutates state",
+          "data-edge-key": "12",
+          "data-edge-id": "sim-state",
+          "data-composition-points": "814,304;814,320;900,320",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 3849.15,
+          "y": 1211.29,
+          "width": 246.18,
+          "height": 45.8
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 42.689,
+        "occurrences": 8,
+        "heldMs": 0,
+        "times": [
+          2.511,
+          7.533,
+          12.556,
+          17.578,
+          22.6,
+          27.622,
+          37.667,
+          42.689
+        ]
+      },
+      {
+        "code": "connector_detached",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(15) > path:nth-of-type(2)",
+        "message": "Connector path endpoints render 502px from the nearest anchorable element — a marked shaft that meets no node.",
+        "rect": {
+          "left": 3207.93,
+          "top": 1537.63,
+          "right": 4095.34,
+          "bottom": 1537.63,
+          "width": 887.4,
+          "height": 0
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Measure the settled node boxes and write `d` in the SVG's user space (invert getScreenCTM), or grow a layout-owned shaft from the source node.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "code_viewer",
+          "data-edge-to": "keil_gen",
+          "data-edge-label": "generates C",
+          "data-edge-key": "14",
+          "data-edge-id": "viewer-keil-gen",
+          "data-composition-points": "590,418;900,418",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 3207.93,
+          "y": 1537.63,
+          "width": 887.4,
+          "height": 0
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 42.689,
+        "occurrences": 8,
+        "heldMs": 0,
+        "times": [
+          2.511,
+          7.533,
+          12.556,
+          17.578,
+          22.6,
+          27.622,
+          32.644,
+          42.689
+        ]
+      },
+      {
+        "code": "connector_detached",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(16) > path:nth-of-type(2)",
+        "message": "Connector path endpoints render 983px from the nearest anchorable element — a marked shaft that meets no node.",
+        "rect": {
+          "left": 4567.66,
+          "top": 1509,
+          "right": 4782.36,
+          "bottom": 1509,
+          "width": 214.69,
+          "height": 0
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Measure the settled node boxes and write `d` in the SVG's user space (invert getScreenCTM), or grow a layout-owned shaft from the source node.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead-emphasis)\",\"after\":\"url(#arrowhead-emphasis)\"}]",
+          "data-edge-from": "keil_gen",
+          "data-edge-to": "keil_ide",
+          "data-edge-label": "exports source",
+          "data-edge-key": "15",
+          "data-edge-id": "gen-to-ide",
+          "data-composition-points": "1065,408;1140,408",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 4567.66,
+          "y": 1509,
+          "width": 214.69,
+          "height": 0
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 32.644,
+        "occurrences": 7,
+        "heldMs": 0,
+        "times": [
+          2.511,
+          7.533,
+          12.556,
+          17.578,
+          22.6,
+          27.622,
+          32.644
+        ]
+      },
+      {
+        "code": "connector_orphan",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(9) > path:nth-of-type(2)",
+        "message": "Connector shaft is visible while its endpoint #popup-step-8 is not on stage.",
+        "rect": {
+          "left": 3207.93,
+          "top": 988.01,
+          "right": 3511.37,
+          "bottom": 1028.08,
+          "width": 303.44,
+          "height": 40.08
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Show the shaft only after both ends are on, and hide it with the earlier exit. Do not give the line its own clock.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "slot_grid",
+          "data-edge-to": "sim_hook",
+          "data-edge-label": "slot clicks",
+          "data-edge-key": "8",
+          "data-edge-id": "grid-sim",
+          "data-composition-points": "590,226;696,226;696,240",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 3207.93,
+          "y": 988.01,
+          "width": 303.44,
+          "height": 40.08
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 42.689,
+        "occurrences": 8,
+        "heldMs": 0,
+        "times": [
+          2.511,
+          7.533,
+          17.578,
+          22.6,
+          27.622,
+          32.644,
+          37.667,
+          42.689
+        ]
+      },
+      {
+        "code": "connector_orphan",
+        "severity": "info",
+        "time": 2.511,
+        "selector": "#archify-svg > g:nth-of-type(16) > path:nth-of-type(2)",
+        "message": "Connector shaft is visible while its endpoint #popup-step-16 is not on stage.",
+        "rect": {
+          "left": 4567.66,
+          "top": 1509,
+          "right": 4782.36,
+          "bottom": 1509,
+          "width": 214.69,
+          "height": 0
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Show the shaft only after both ends are on, and hide it with the earlier exit. Do not give the line its own clock.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead-emphasis)\",\"after\":\"url(#arrowhead-emphasis)\"}]",
+          "data-edge-from": "keil_gen",
+          "data-edge-to": "keil_ide",
+          "data-edge-label": "exports source",
+          "data-edge-key": "15",
+          "data-edge-id": "gen-to-ide",
+          "data-composition-points": "1065,408;1140,408",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 4567.66,
+          "y": 1509,
+          "width": 214.69,
+          "height": 0
+        },
+        "firstSeen": 2.511,
+        "lastSeen": 32.644,
+        "occurrences": 7,
+        "heldMs": 0,
+        "times": [
+          2.511,
+          7.533,
+          12.556,
+          17.578,
+          22.6,
+          27.622,
+          32.644
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.533,
+        "selector": "#node-barrier_gate > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1795.45,
+          "top": 833.47,
+          "right": 2045.03,
+          "bottom": 862.09,
+          "width": 249.58,
+          "height": 28.63
+        },
+        "containerSelector": "#popup-step-3",
+        "text": "Boom Barrier & Sensor",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-node-label": "",
+          "data-detail-anchor": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1795.45,
+          "y": 833.47,
+          "width": 249.58,
+          "height": 28.63
+        },
+        "firstSeen": 7.533,
+        "lastSeen": 7.533,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          7.533
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.533,
+        "selector": "#node-barrier_gate > text:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1772.81,
+          "top": 876.41,
+          "right": 2067.66,
+          "bottom": 907.89,
+          "width": 294.85,
+          "height": 31.49
+        },
+        "containerSelector": "#popup-step-3",
+        "text": "Servo & IR Beam Sensor",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-detail": "context"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1772.81,
+          "y": 876.41,
+          "width": 294.85,
+          "height": 31.49
+        },
+        "firstSeen": 7.533,
+        "lastSeen": 7.533,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          7.533
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.533,
+        "selector": "#archify-svg > g:nth-of-type(48) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 560.5,
+          "top": 2087.28,
+          "right": 685.07,
+          "bottom": 2130.22,
+          "width": 124.57,
+          "height": 42.94
+        },
+        "containerSelector": "div.bottom-bar",
+        "text": "Legend",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 560.5,
+          "y": 2087.28,
+          "width": 124.57,
+          "height": 42.94
+        },
+        "firstSeen": 7.533,
+        "lastSeen": 7.533,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          7.533
+        ]
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 7.533,
+        "selector": "#archify-svg > g:nth-of-type(48) > g:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 623.48,
+          "top": 2155.99,
+          "right": 745.86,
+          "bottom": 2181.75,
+          "width": 122.38,
+          "height": 25.76
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Frontend",
+        "fixHint": "Text is 122px x 26px inside 3840px x 2160px and overflows by up to 22px; increase the container height to at least ~2182px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "bottom": 21.75
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 623.48,
+          "y": 2155.99,
+          "width": 122.38,
+          "height": 25.76
+        },
+        "firstSeen": 7.533,
+        "lastSeen": 7.533,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          7.533
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.533,
+        "selector": "#archify-svg > g:nth-of-type(48) > g:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 623.48,
+          "top": 2150.26,
+          "right": 745.86,
+          "bottom": 2184.61,
+          "width": 122.38,
+          "height": 34.35
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Frontend",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "bottom": 24.61
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 623.48,
+          "y": 2150.26,
+          "width": 122.38,
+          "height": 34.35
+        },
+        "firstSeen": 7.533,
+        "lastSeen": 37.667,
+        "occurrences": 4,
+        "heldMs": 0,
+        "times": [
+          7.533,
+          27.622,
+          32.644,
+          37.667
+        ]
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 7.533,
+        "selector": "#archify-svg > g:nth-of-type(48) > g:nth-of-type(2) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 952.68,
+          "top": 2155.99,
+          "right": 1071.39,
+          "bottom": 2181.75,
+          "width": 118.71,
+          "height": 25.76
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Backend",
+        "fixHint": "Text is 119px x 26px inside 3840px x 2160px and overflows by up to 22px; increase the container height to at least ~2182px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "bottom": 21.75
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 952.68,
+          "y": 2155.99,
+          "width": 118.71,
+          "height": 25.76
+        },
+        "firstSeen": 7.533,
+        "lastSeen": 7.533,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          7.533
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.533,
+        "selector": "#archify-svg > g:nth-of-type(48) > g:nth-of-type(2) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 952.68,
+          "top": 2150.26,
+          "right": 1071.39,
+          "bottom": 2184.61,
+          "width": 118.71,
+          "height": 34.35
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Backend",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "bottom": 24.61
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 952.68,
+          "y": 2150.26,
+          "width": 118.71,
+          "height": 34.35
+        },
+        "firstSeen": 7.533,
+        "lastSeen": 37.667,
+        "occurrences": 3,
+        "heldMs": 0,
+        "times": [
+          7.533,
+          32.644,
+          37.667
+        ]
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 7.533,
+        "selector": "#archify-svg > g:nth-of-type(48) > g:nth-of-type(3) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 1264.7,
+          "top": 2155.99,
+          "right": 1394.23,
+          "bottom": 2181.75,
+          "width": 129.53,
+          "height": 25.76
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Database",
+        "fixHint": "Text is 130px x 26px inside 3840px x 2160px and overflows by up to 22px; increase the container height to at least ~2182px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "bottom": 21.75
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1264.7,
+          "y": 2155.99,
+          "width": 129.53,
+          "height": 25.76
+        },
+        "firstSeen": 7.533,
+        "lastSeen": 7.533,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          7.533
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.533,
+        "selector": "#archify-svg > g:nth-of-type(48) > g:nth-of-type(3) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1264.7,
+          "top": 2150.26,
+          "right": 1394.23,
+          "bottom": 2184.61,
+          "width": 129.53,
+          "height": 34.35
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Database",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "bottom": 24.61
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1264.7,
+          "y": 2150.26,
+          "width": 129.53,
+          "height": 34.35
+        },
+        "firstSeen": 7.533,
+        "lastSeen": 7.533,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          7.533
+        ]
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 7.533,
+        "selector": "#archify-svg > g:nth-of-type(48) > g:nth-of-type(4) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 1593.9,
+          "top": 2155.99,
+          "right": 1706.03,
+          "bottom": 2181.75,
+          "width": 112.13,
+          "height": 25.76
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "External",
+        "fixHint": "Text is 112px x 26px inside 3840px x 2160px and overflows by up to 22px; increase the container height to at least ~2182px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "bottom": 21.75
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1593.9,
+          "y": 2155.99,
+          "width": 112.13,
+          "height": 25.76
+        },
+        "firstSeen": 7.533,
+        "lastSeen": 7.533,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          7.533
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.533,
+        "selector": "#archify-svg > g:nth-of-type(48) > g:nth-of-type(4) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1593.9,
+          "top": 2150.26,
+          "right": 1706.03,
+          "bottom": 2184.61,
+          "width": 112.13,
+          "height": 34.35
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "External",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "bottom": 24.61
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1593.9,
+          "y": 2150.26,
+          "width": 112.13,
+          "height": 34.35
+        },
+        "firstSeen": 7.533,
+        "lastSeen": 7.533,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          7.533
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 12.556,
+        "selector": "#node-slot_grid > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1827.52,
+          "top": 796.08,
+          "right": 2012.96,
+          "bottom": 836.16,
+          "width": 185.44,
+          "height": 40.08
+        },
+        "containerSelector": "#popup-step-5",
+        "text": "32-Slot Grid",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.67,
+        "dataAttributes": {
+          "data-node-label": "",
+          "data-detail-anchor": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1827.52,
+          "y": 796.08,
+          "width": 185.44,
+          "height": 40.08
+        },
+        "firstSeen": 12.556,
+        "lastSeen": 12.556,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.556
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 12.556,
+        "selector": "#node-slot_grid > text:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1795.13,
+          "top": 847.61,
+          "right": 2045.34,
+          "bottom": 879.1,
+          "width": 250.21,
+          "height": 31.49
+        },
+        "containerSelector": "#popup-step-5",
+        "text": "Cars, Bikes & Trucks",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-detail": "context"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1795.13,
+          "y": 847.61,
+          "width": 250.21,
+          "height": 31.49
+        },
+        "firstSeen": 12.556,
+        "lastSeen": 12.556,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.556
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 12.556,
+        "selector": "#archify-svg > g:nth-of-type(34) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1711.22,
+          "top": 922.04,
+          "right": 1791.46,
+          "bottom": 950.66,
+          "width": 80.24,
+          "height": 28.63
+        },
+        "containerSelector": "#popup-step-5",
+        "text": "mounts",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1711.22,
+          "y": 922.04,
+          "width": 80.24,
+          "height": 28.63
+        },
+        "firstSeen": 12.556,
+        "lastSeen": 12.556,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.556
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 12.556,
+        "selector": "#archify-svg > g:nth-of-type(39) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 2022.15,
+          "top": 942.07,
+          "right": 2156.11,
+          "bottom": 970.7,
+          "width": 133.96,
+          "height": 28.63
+        },
+        "containerSelector": "#popup-step-5",
+        "text": "state stream",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 2022.15,
+          "y": 942.07,
+          "width": 133.96,
+          "height": 28.63
+        },
+        "firstSeen": 12.556,
+        "lastSeen": 12.556,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.556
+        ]
+      },
+      {
+        "code": "connector_orphan",
+        "severity": "info",
+        "time": 12.556,
+        "selector": "#archify-svg > g:nth-of-type(7) > path:nth-of-type(2)",
+        "message": "Connector shaft is visible while its endpoint #popup-step-3 is not on stage.",
+        "rect": {
+          "left": 2134.93,
+          "top": 318.03,
+          "right": 2607.26,
+          "bottom": 839.02,
+          "width": 472.33,
+          "height": 520.99
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Show the shaft only after both ends are on, and hide it with the earlier exit. Do not give the line its own clock.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "sim_hook",
+          "data-edge-to": "barrier_gate",
+          "data-edge-label": "servo & IR events",
+          "data-edge-key": "6",
+          "data-edge-id": "sim-barrier",
+          "data-composition-points": "755,240;755,58;590,58",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 2134.93,
+          "y": 318.03,
+          "width": 472.33,
+          "height": 520.99
+        },
+        "firstSeen": 12.556,
+        "lastSeen": 42.689,
+        "occurrences": 7,
+        "heldMs": 0,
+        "times": [
+          12.556,
+          17.578,
+          22.6,
+          27.622,
+          32.644,
+          37.667,
+          42.689
+        ]
+      },
+      {
+        "code": "connector_orphan",
+        "severity": "info",
+        "time": 12.556,
+        "selector": "#archify-svg > g:nth-of-type(8) > path:nth-of-type(2)",
+        "message": "Connector shaft is visible while its endpoint #popup-step-4 is not on stage.",
+        "rect": {
+          "left": 2134.93,
+          "top": 575.66,
+          "right": 2567.18,
+          "bottom": 839.02,
+          "width": 432.25,
+          "height": 263.36
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Show the shaft only after both ends are on, and hide it with the earlier exit. Do not give the line its own clock.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "controls",
+          "data-edge-to": "sim_hook",
+          "data-edge-label": "start / step / reset",
+          "data-edge-key": "7",
+          "data-edge-id": "controls-sim",
+          "data-composition-points": "590,148;741,148;741,240",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 2134.93,
+          "y": 575.66,
+          "width": 432.25,
+          "height": 263.36
+        },
+        "firstSeen": 12.556,
+        "lastSeen": 42.689,
+        "occurrences": 6,
+        "heldMs": 0,
+        "times": [
+          12.556,
+          22.6,
+          27.622,
+          32.644,
+          37.667,
+          42.689
+        ]
+      },
+      {
+        "code": "connector_orphan",
+        "severity": "info",
+        "time": 17.578,
+        "selector": "#archify-svg > g:nth-of-type(10) > path:nth-of-type(2)",
+        "message": "Connector shaft is visible while its endpoint #popup-step-5 is not on stage.",
+        "rect": {
+          "left": 1672.82,
+          "top": 1365.15,
+          "right": 1976.26,
+          "bottom": 1399.5,
+          "width": 303.44,
+          "height": 34.35
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Show the shaft only after both ends are on, and hide it with the earlier exit. Do not give the line its own clock.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "sim_hook",
+          "data-edge-to": "telemetry",
+          "data-edge-label": "state stream",
+          "data-edge-key": "9",
+          "data-edge-id": "sim-telemetry",
+          "data-composition-points": "680,288;574,288;574,300",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1672.82,
+          "y": 1365.15,
+          "width": 303.44,
+          "height": 34.35
+        },
+        "firstSeen": 17.578,
+        "lastSeen": 42.689,
+        "occurrences": 6,
+        "heldMs": 0,
+        "times": [
+          17.578,
+          22.6,
+          27.622,
+          32.644,
+          37.667,
+          42.689
+        ]
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 22.6,
+        "selector": "#node-operator > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -10.64,
+          "top": 1413.34,
+          "right": 271.95,
+          "bottom": 1447.69,
+          "width": 282.59,
+          "height": 34.35
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Operator / Student",
+        "fixHint": "Text is 283px x 34px inside 3840px x 2160px and overflows by up to 11px; widen the container to at least ~3851px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "left": 10.64
+        },
+        "dataAttributes": {
+          "data-node-label": "",
+          "data-detail-anchor": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -10.64,
+          "y": 1413.34,
+          "width": 282.59,
+          "height": 34.35
+        },
+        "firstSeen": 22.6,
+        "lastSeen": 27.622,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          22.6,
+          27.622
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 22.6,
+        "selector": "#node-operator > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -10.64,
+          "top": 1407.61,
+          "right": 271.95,
+          "bottom": 1447.69,
+          "width": 282.59,
+          "height": 40.08
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Operator / Student",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "left": 10.64
+        },
+        "dataAttributes": {
+          "data-node-label": "",
+          "data-detail-anchor": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -10.64,
+          "y": 1407.61,
+          "width": 282.59,
+          "height": 40.08
+        },
+        "firstSeen": 22.6,
+        "lastSeen": 37.667,
+        "occurrences": 4,
+        "heldMs": 0,
+        "times": [
+          22.6,
+          27.622,
+          32.644,
+          37.667
+        ]
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 22.6,
+        "selector": "#node-operator > text:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -4.69,
+          "top": 1464.87,
+          "right": 266,
+          "bottom": 1487.77,
+          "width": 270.69,
+          "height": 22.9
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Browser UI Interaction",
+        "fixHint": "Text is 271px x 23px inside 3840px x 2160px and overflows by up to 5px; widen the container to at least ~3845px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "left": 4.69
+        },
+        "dataAttributes": {
+          "data-detail": "context"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -4.69,
+          "y": 1464.87,
+          "width": 270.69,
+          "height": 22.9
+        },
+        "firstSeen": 22.6,
+        "lastSeen": 27.622,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          22.6,
+          27.622
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 22.6,
+        "selector": "#node-operator > text:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -4.69,
+          "top": 1459.14,
+          "right": 266,
+          "bottom": 1490.63,
+          "width": 270.69,
+          "height": 31.49
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Browser UI Interaction",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "left": 4.69
+        },
+        "dataAttributes": {
+          "data-detail": "context"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -4.69,
+          "y": 1459.14,
+          "width": 270.69,
+          "height": 31.49
+        },
+        "firstSeen": 22.6,
+        "lastSeen": 37.667,
+        "occurrences": 4,
+        "heldMs": 0,
+        "times": [
+          22.6,
+          27.622,
+          32.644,
+          37.667
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 22.6,
+        "selector": "#archify-svg > g:nth-of-type(36) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1661.63,
+          "top": 780.7,
+          "right": 1848.73,
+          "bottom": 809.33,
+          "width": 187.1,
+          "height": 28.63
+        },
+        "containerSelector": "#popup-step-9",
+        "text": "servo & IR events",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1661.63,
+          "y": 780.7,
+          "width": 187.1,
+          "height": 28.63
+        },
+        "firstSeen": 22.6,
+        "lastSeen": 22.6,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          22.6
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 22.6,
+        "selector": "#archify-svg > g:nth-of-type(47) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 2025.7,
+          "top": 849.41,
+          "right": 2376.5,
+          "bottom": 880.9,
+          "width": 350.8,
+          "height": 31.49
+        },
+        "containerSelector": "#popup-step-9",
+        "text": "Simulation & Emulation Core",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.67,
+        "dataAttributes": {
+          "data-boundary-label": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 2025.7,
+          "y": 849.41,
+          "width": 350.8,
+          "height": 31.49
+        },
+        "firstSeen": 22.6,
+        "lastSeen": 22.6,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          22.6
+        ]
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 22.6,
+        "selector": "#archify-svg > g:nth-of-type(48) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -55.41,
+          "top": 2066.01,
+          "right": 69.16,
+          "bottom": 2100.36,
+          "width": 124.57,
+          "height": 34.35
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Legend",
+        "fixHint": "Text is 125px x 34px inside 3840px x 2160px and overflows by up to 55px; widen the container to at least ~3895px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "left": 55.41
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -55.41,
+          "y": 2066.01,
+          "width": 124.57,
+          "height": 34.35
+        },
+        "firstSeen": 22.6,
+        "lastSeen": 22.6,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          22.6
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 22.6,
+        "selector": "#archify-svg > g:nth-of-type(48) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -55.41,
+          "top": 2057.42,
+          "right": 69.16,
+          "bottom": 2100.36,
+          "width": 124.57,
+          "height": 42.94
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Legend",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "left": 55.41
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -55.41,
+          "y": 2057.42,
+          "width": 124.57,
+          "height": 42.94
+        },
+        "firstSeen": 22.6,
+        "lastSeen": 37.667,
+        "occurrences": 4,
+        "heldMs": 0,
+        "times": [
+          22.6,
+          27.622,
+          32.644,
+          37.667
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 27.622,
+        "selector": "#node-allocation > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 2275.85,
+          "top": 918.44,
+          "right": 2528.88,
+          "bottom": 955.66,
+          "width": 253.03,
+          "height": 37.21
+        },
+        "containerSelector": "#popup-step-11",
+        "text": "Slot & Fee Engine",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-node-label": "",
+          "data-detail-anchor": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 2275.85,
+          "y": 918.44,
+          "width": 253.03,
+          "height": 37.21
+        },
+        "firstSeen": 27.622,
+        "lastSeen": 27.622,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          27.622
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 27.622,
+        "selector": "#node-allocation > text:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 2272.25,
+          "top": 967.11,
+          "right": 2532.48,
+          "bottom": 998.6,
+          "width": 260.23,
+          "height": 31.49
+        },
+        "containerSelector": "#popup-step-11",
+        "text": "Slot Lookup & Pricing",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-detail": "context"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 2272.25,
+          "y": 967.11,
+          "width": 260.23,
+          "height": 31.49
+        },
+        "firstSeen": 27.622,
+        "lastSeen": 27.622,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          27.622
+        ]
+      },
+      {
+        "code": "connector_orphan",
+        "severity": "info",
+        "time": 27.622,
+        "selector": "#archify-svg > g:nth-of-type(11) > path:nth-of-type(2)",
+        "message": "Connector shaft is visible while its endpoint #popup-step-10 is not on stage.",
+        "rect": {
+          "left": 1920.02,
+          "top": 700.89,
+          "right": 2166.2,
+          "bottom": 1044.4,
+          "width": 246.18,
+          "height": 343.51
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Show the shaft only after both ends are on, and hide it with the earlier exit. Do not give the line its own clock.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "sim_hook",
+          "data-edge-to": "fsm_engine",
+          "data-edge-label": "tick transitions",
+          "data-edge-key": "10",
+          "data-edge-id": "sim-fsm",
+          "data-composition-points": "814,240;814,120;900,120",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1920.02,
+          "y": 700.89,
+          "width": 246.18,
+          "height": 343.51
+        },
+        "firstSeen": 27.622,
+        "lastSeen": 42.689,
+        "occurrences": 4,
+        "heldMs": 0,
+        "times": [
+          27.622,
+          32.644,
+          37.667,
+          42.689
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 32.644,
+        "selector": "#node-system_state > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1946.19,
+          "top": 1132.63,
+          "right": 2324.76,
+          "bottom": 1172.7,
+          "width": 378.58,
+          "height": 40.08
+        },
+        "containerSelector": "#popup-step-13",
+        "text": "In-Memory System State",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-node-label": "",
+          "data-detail-anchor": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1946.19,
+          "y": 1132.63,
+          "width": 378.58,
+          "height": 40.08
+        },
+        "firstSeen": 32.644,
+        "lastSeen": 32.644,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          32.644
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 32.644,
+        "selector": "#node-system_state > text:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1993.84,
+          "top": 1184.15,
+          "right": 2277.11,
+          "bottom": 1215.64,
+          "width": 283.26,
+          "height": 31.49
+        },
+        "containerSelector": "#popup-step-13",
+        "text": "ParkingSystem_t Struct",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-detail": "context"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1993.84,
+          "y": 1184.15,
+          "width": 283.26,
+          "height": 31.49
+        },
+        "firstSeen": 32.644,
+        "lastSeen": 32.644,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          32.644
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 32.644,
+        "selector": "#archify-svg > g:nth-of-type(30) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -137,
+          "top": 1015.26,
+          "right": -43.39,
+          "bottom": 1043.88,
+          "width": 93.61,
+          "height": 28.62
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "interacts",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "left": 137
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -137,
+          "y": 1015.26,
+          "width": 93.61,
+          "height": 28.62
+        },
+        "firstSeen": 32.644,
+        "lastSeen": 37.667,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          32.644,
+          37.667
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 32.644,
+        "selector": "#archify-svg > g:nth-of-type(41) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1848.88,
+          "top": 1015.26,
+          "right": 1945.45,
+          "bottom": 1043.88,
+          "width": 96.57,
+          "height": 28.63
+        },
+        "containerSelector": "#popup-step-13",
+        "text": "allocates",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.33,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1848.88,
+          "y": 1015.26,
+          "width": 96.57,
+          "height": 28.63
+        },
+        "firstSeen": 32.644,
+        "lastSeen": 32.644,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          32.644
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 32.644,
+        "selector": "#archify-svg > g:nth-of-type(43) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 2183.16,
+          "top": 1012.4,
+          "right": 2315.65,
+          "bottom": 1041.02,
+          "width": 132.48,
+          "height": 28.63
+        },
+        "containerSelector": "#popup-step-13",
+        "text": "slot updates",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.33,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 2183.16,
+          "y": 1012.4,
+          "width": 132.48,
+          "height": 28.63
+        },
+        "firstSeen": 32.644,
+        "lastSeen": 32.644,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          32.644
+        ]
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 32.644,
+        "selector": "#archify-svg > g:nth-of-type(46) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -52.98,
+          "top": 333.97,
+          "right": 274.61,
+          "bottom": 359.72,
+          "width": 327.59,
+          "height": 25.75
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Next.js Presentation Layer",
+        "fixHint": "Text is 328px x 26px inside 3840px x 2160px and overflows by up to 53px; widen the container to at least ~3893px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "left": 52.98
+        },
+        "dataAttributes": {
+          "data-boundary-label": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -52.98,
+          "y": 333.97,
+          "width": 327.59,
+          "height": 25.75
+        },
+        "firstSeen": 32.644,
+        "lastSeen": 37.667,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          32.644,
+          37.667
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 32.644,
+        "selector": "#archify-svg > g:nth-of-type(46) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -52.98,
+          "top": 328.24,
+          "right": 274.61,
+          "bottom": 359.72,
+          "width": 327.59,
+          "height": 31.48
+        },
+        "containerSelector": "#parkcore-explainer",
+        "text": "Next.js Presentation Layer",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 3840,
+          "bottom": 2160,
+          "width": 3840,
+          "height": 2160
+        },
+        "overflow": {
+          "left": 52.98
+        },
+        "dataAttributes": {
+          "data-boundary-label": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -52.98,
+          "y": 328.24,
+          "width": 327.59,
+          "height": 31.48
+        },
+        "firstSeen": 32.644,
+        "lastSeen": 37.667,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          32.644,
+          37.667
+        ]
+      },
+      {
+        "code": "connector_orphan",
+        "severity": "info",
+        "time": 37.667,
+        "selector": "#archify-svg > g:nth-of-type(13) > path:nth-of-type(2)",
+        "message": "Connector shaft is visible while its endpoint #popup-step-13 is not on stage.",
+        "rect": {
+          "left": 1626.67,
+          "top": 808.22,
+          "right": 1872.85,
+          "bottom": 854.03,
+          "width": 246.18,
+          "height": 45.8
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Show the shaft only after both ends are on, and hide it with the earlier exit. Do not give the line its own clock.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "sim_hook",
+          "data-edge-to": "system_state",
+          "data-edge-label": "mutates state",
+          "data-edge-key": "12",
+          "data-edge-id": "sim-state",
+          "data-composition-points": "814,304;814,320;900,320",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1626.67,
+          "y": 808.22,
+          "width": 246.18,
+          "height": 45.8
+        },
+        "firstSeen": 37.667,
+        "lastSeen": 42.689,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          37.667,
+          42.689
+        ]
+      },
+      {
+        "code": "connector_orphan",
+        "severity": "info",
+        "time": 37.667,
+        "selector": "#archify-svg > g:nth-of-type(14) > path:nth-of-type(2)",
+        "message": "Connector shaft is visible while its endpoint #popup-step-13 is not on stage.",
+        "rect": {
+          "left": 2109.02,
+          "top": 613.57,
+          "right": 2109.02,
+          "bottom": 739.52,
+          "width": 0,
+          "height": 125.95
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Show the shaft only after both ends are on, and hide it with the earlier exit. Do not give the line its own clock.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "allocation",
+          "data-edge-to": "system_state",
+          "data-edge-label": "slot updates",
+          "data-edge-key": "13",
+          "data-edge-id": "allocation-state",
+          "data-composition-points": "982.5,236;982.5,280",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 2109.02,
+          "y": 613.57,
+          "width": 0,
+          "height": 125.95
+        },
+        "firstSeen": 37.667,
+        "lastSeen": 42.689,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          37.667,
+          42.689
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 42.689,
+        "selector": "#node-keil_ide > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 3097.31,
+          "top": 1389.21,
+          "right": 3261.77,
+          "bottom": 1421.27,
+          "width": 164.46,
+          "height": 32.06
+        },
+        "containerSelector": "#popup-step-16",
+        "text": "Keil uVision 5",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-layout-allow-overflow": "",
+          "data-node-label": "",
+          "data-detail-anchor": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 3097.31,
+          "y": 1389.21,
+          "width": 164.46,
+          "height": 32.06
+        },
+        "firstSeen": 42.689,
+        "lastSeen": 42.689,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          42.689
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 42.689,
+        "selector": "#node-keil_ide > text:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 3058.42,
+          "top": 1430.43,
+          "right": 3300.67,
+          "bottom": 1455.62,
+          "width": 242.25,
+          "height": 25.19
+        },
+        "containerSelector": "#popup-step-16",
+        "text": "ARM Simulator / LPC1768",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-layout-allow-overflow": "",
+          "data-detail": "context"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 3058.42,
+          "y": 1430.43,
+          "width": 242.25,
+          "height": 25.19
+        },
+        "firstSeen": 42.689,
+        "lastSeen": 42.689,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          42.689
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 42.689,
+        "selector": "#archify-svg > g:nth-of-type(45) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 2880.04,
+          "top": 1373.18,
+          "right": 3009.58,
+          "bottom": 1396.08,
+          "width": 129.53,
+          "height": 22.9
+        },
+        "containerSelector": "#popup-step-16 > div:nth-of-type(1) > img:nth-of-type(1)",
+        "text": "exports source",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 2880.04,
+          "y": 1373.18,
+          "width": 129.53,
+          "height": 22.9
+        },
+        "firstSeen": 42.689,
+        "lastSeen": 42.689,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          42.689
+        ]
+      },
+      {
+        "code": "connector_orphan",
+        "severity": "info",
+        "time": 42.689,
+        "selector": "#archify-svg > g:nth-of-type(15) > path:nth-of-type(2)",
+        "message": "Connector shaft is visible while its endpoint #popup-step-15 is not on stage.",
+        "rect": {
+          "left": 1771.15,
+          "top": 1437.3,
+          "right": 2481.07,
+          "bottom": 1437.3,
+          "width": 709.92,
+          "height": 0
+        },
+        "containerSelector": "#archify-svg",
+        "fixHint": "Show the shaft only after both ends are on, and hide it with the earlier exit. Do not give the line its own clock.",
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"marker-end\",\"localName\":\"marker-end\",\"namespaceURI\":null,\"before\":\"url(#arrowhead)\",\"after\":\"url(#arrowhead)\"}]",
+          "data-edge-from": "code_viewer",
+          "data-edge-to": "keil_gen",
+          "data-edge-label": "generates C",
+          "data-edge-key": "14",
+          "data-edge-id": "viewer-keil-gen",
+          "data-composition-points": "590,418;900,418",
+          "data-composition-crossover": "halo",
+          "data-composition-independent": "true",
+          "data-animate": "edge"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1771.15,
+          "y": 1437.3,
+          "width": 709.92,
+          "height": 0
+        },
+        "firstSeen": 42.689,
+        "lastSeen": 42.689,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          42.689
+        ]
+      }
+    ],
+    "duration": 45.2,
+    "samples": [
+      2.511,
+      7.533,
+      12.556,
+      17.578,
+      22.6,
+      27.622,
+      32.644,
+      37.667,
+      42.689
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 70,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      2.511,
+      12.556,
+      22.6,
+      32.644,
+      42.689
+    ],
+    "checked": 250,
+    "passed": 250
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 2,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "film_silent",
+        "severity": "warning",
+        "message": "This 45 s film has no sound source (no <audio>, no <video> with sound): add a music bed and sounds on the visible actions unless the person asked for silence; see references/sound.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 56 px (2.6% of the 2160 px short side, what a phone can read) and 182 text elements stay under it for 0.5 s or more, the smallest \"Step 16 • EXPORTS SOURCE\" at 13 px: set reading text to at least 56 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "Step 16 • EXPORTS SOURCE",
+        "selector": "#popup-step-16 > div:nth-of-type(2) > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 2392.55,
+          "y": 1012.43,
+          "width": 249.91,
+          "height": 19.92
+        },
+        "time": 37.708,
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0.25,
+          0.25,
+          0.25,
+          2.622,
+          2.622,
+          2.622,
+          2.622,
+          2.622,
+          2.747,
+          2.747,
+          2.747,
+          2.747,
+          2.747,
+          2.747,
+          2.747,
+          2.747,
+          2.747,
+          2.747,
+          2.747,
+          2.747,
+          2.747,
+          2.747,
+          2.747,
+          2.872,
+          3.122,
+          3.122,
+          5.119,
+          5.244,
+          5.244,
+          5.244,
+          5.244,
+          5.244,
+          5.244,
+          5.244,
+          5.244,
+          5.369,
+          5.619,
+          5.619,
+          5.619,
+          5.619,
+          7.741,
+          7.741,
+          7.741,
+          7.741,
+          7.741,
+          7.741,
+          7.741,
+          7.741,
+          7.741,
+          10.239,
+          10.239,
+          10.239,
+          10.239,
+          10.239,
+          10.239,
+          10.239,
+          10.239,
+          12.736,
+          12.736,
+          12.736,
+          12.736,
+          12.736,
+          12.736,
+          12.736,
+          12.736,
+          15.108,
+          15.233,
+          15.233,
+          15.233,
+          15.233,
+          15.233,
+          15.233,
+          15.233,
+          15.233,
+          17.73,
+          17.73,
+          17.73,
+          17.73,
+          17.73,
+          17.73,
+          17.73,
+          17.73,
+          20.228,
+          20.228,
+          20.228,
+          20.228,
+          20.228,
+          20.228,
+          20.228,
+          20.228,
+          22.725,
+          22.725,
+          22.725,
+          22.725,
+          22.725,
+          22.725,
+          22.725,
+          22.725,
+          25.222,
+          25.222,
+          25.222,
+          25.222,
+          25.222,
+          25.222,
+          25.222,
+          25.222,
+          27.719,
+          27.719,
+          27.719,
+          27.719,
+          27.719,
+          27.719,
+          27.719,
+          27.719,
+          30.217,
+          30.217,
+          30.217,
+          30.217,
+          30.217,
+          30.217,
+          30.217,
+          30.217,
+          32.714,
+          32.714,
+          32.714,
+          32.714,
+          32.714,
+          32.714,
+          32.714,
+          32.714,
+          35.211,
+          35.211,
+          35.211,
+          35.211,
+          35.211,
+          35.211,
+          35.211,
+          35.211,
+          37.708,
+          37.708,
+          37.708,
+          37.708,
+          37.708,
+          37.708,
+          37.708,
+          37.708
+        ],
+        "fontPx": 12.88,
+        "floorPx": 56,
+        "seconds": 7.367,
+        "elements": [
+          {
+            "selector": "#popup-step-16 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 16 • EXPORTS SOURCE",
+            "fontPx": 12.88,
+            "time": 37.708,
+            "seconds": 7.367
+          },
+          {
+            "selector": "#popup-step-16 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Full project exported to Keil uVision 5 ARM Cortex-M3 simulator. 0 Errors, 0 Warnings.",
+            "fontPx": 13.74,
+            "time": 37.708,
+            "seconds": 7.367
+          },
+          {
+            "selector": "#popup-step-7 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 07 • START / STEP / RESET",
+            "fontPx": 15.73,
+            "time": 15.233,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-8 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 08 • SLOT CLICKS",
+            "fontPx": 15.73,
+            "time": 17.73,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#popup-step-9 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 09 • SERVO & IR EVENTS",
+            "fontPx": 15.73,
+            "time": 20.228,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-10 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 10 • TICK TRANSITIONS",
+            "fontPx": 15.73,
+            "time": 22.725,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-11 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 11 • ALLOCATES",
+            "fontPx": 15.73,
+            "time": 25.222,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-12 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 12 • STATE STREAM",
+            "fontPx": 15.73,
+            "time": 27.719,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#popup-step-13 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 13 • MUTATES STATE",
+            "fontPx": 15.73,
+            "time": 30.217,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-14 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 14 • SLOT UPDATES",
+            "fontPx": 15.73,
+            "time": 32.714,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-15 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 15 • GENERATES C",
+            "fontPx": 15.73,
+            "time": 35.211,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-1 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 01 / 16",
+            "fontPx": 16,
+            "time": 0,
+            "seconds": 2.872
+          },
+          {
+            "selector": "#inspector-step-1 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "INTERACTS",
+            "fontPx": 16,
+            "time": 0,
+            "seconds": 2.872
+          },
+          {
+            "selector": "div.status-pill",
+            "text": "4K UHD ARCHIFY DAG",
+            "fontPx": 16,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#inspector-step-2 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 02 / 16",
+            "fontPx": 16,
+            "time": 2.747,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-2 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "MOUNTS",
+            "fontPx": 16,
+            "time": 2.747,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-3 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 03 / 16",
+            "fontPx": 16,
+            "time": 5.244,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-3 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "MOUNTS",
+            "fontPx": 16,
+            "time": 5.244,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-4 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 04 / 16",
+            "fontPx": 16,
+            "time": 7.741,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-4 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "MOUNTS",
+            "fontPx": 16,
+            "time": 7.741,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-5 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 05 / 16",
+            "fontPx": 16,
+            "time": 10.239,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-5 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "MOUNTS",
+            "fontPx": 16,
+            "time": 10.239,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-6 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 06 / 16",
+            "fontPx": 16,
+            "time": 12.736,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-6 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "MOUNTS",
+            "fontPx": 16,
+            "time": 12.736,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-7 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 07 / 16",
+            "fontPx": 16,
+            "time": 15.233,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-7 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "START / STEP / RESET",
+            "fontPx": 16,
+            "time": 15.233,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-8 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 08 / 16",
+            "fontPx": 16,
+            "time": 17.73,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-8 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "SLOT CLICKS",
+            "fontPx": 16,
+            "time": 17.73,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-9 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 09 / 16",
+            "fontPx": 16,
+            "time": 20.228,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-9 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "SERVO & IR EVENTS",
+            "fontPx": 16,
+            "time": 20.228,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-10 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 10 / 16",
+            "fontPx": 16,
+            "time": 22.725,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-10 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "TICK TRANSITIONS",
+            "fontPx": 16,
+            "time": 22.725,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-11 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 11 / 16",
+            "fontPx": 16,
+            "time": 25.222,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-11 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "ALLOCATES",
+            "fontPx": 16,
+            "time": 25.222,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-12 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 12 / 16",
+            "fontPx": 16,
+            "time": 27.719,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-12 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "STATE STREAM",
+            "fontPx": 16,
+            "time": 27.719,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-13 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 13 / 16",
+            "fontPx": 16,
+            "time": 30.217,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-13 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "MUTATES STATE",
+            "fontPx": 16,
+            "time": 30.217,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-14 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 14 / 16",
+            "fontPx": 16,
+            "time": 32.714,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-14 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "SLOT UPDATES",
+            "fontPx": 16,
+            "time": 32.714,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-15 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 15 / 16",
+            "fontPx": 16,
+            "time": 35.211,
+            "seconds": 2.747
+          },
+          {
+            "selector": "#inspector-step-15 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "GENERATES C",
+            "fontPx": 16,
+            "time": 35.211,
+            "seconds": 2.747
+          },
+          {
+            "selector": "#inspector-step-16 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Step 16 / 16",
+            "fontPx": 16,
+            "time": 37.708,
+            "seconds": 7.492
+          },
+          {
+            "selector": "#inspector-step-16 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+            "text": "EXPORTS SOURCE",
+            "fontPx": 16,
+            "time": 37.708,
+            "seconds": 7.492
+          },
+          {
+            "selector": "#popup-step-1 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 01 • INTERACTS",
+            "fontPx": 16.1,
+            "time": 0.25,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-2 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 02 • MOUNTS",
+            "fontPx": 16.1,
+            "time": 2.747,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-3 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 03 • MOUNTS",
+            "fontPx": 16.1,
+            "time": 5.244,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-4 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 04 • MOUNTS",
+            "fontPx": 16.1,
+            "time": 7.741,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#popup-step-5 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 05 • MOUNTS",
+            "fontPx": 16.1,
+            "time": 10.239,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-7 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Control panel fires start tick to useParkingSimulation timer loop.",
+            "fontPx": 16.77,
+            "time": 15.233,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-8 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Slot #02 clicked by user. Dispatches ingress event to simulation core.",
+            "fontPx": 16.77,
+            "time": 17.73,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#popup-step-9 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Optical beam broken (LOW) -> LPC1768 PWM1MR4 = 75000 lifts boom arm to 90°.",
+            "fontPx": 16.77,
+            "time": 20.228,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-10 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Simulation tick drives deterministic transition: STATE_IDLE -> STATE_PROCESS_ENTRY.",
+            "fontPx": 16.77,
+            "time": 22.725,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-11 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Linear scan allocates Slot #02. Duration tariff: $20/hr (Car), $10/hr (Bike), $40/hr (Truck).",
+            "fontPx": 16.77,
+            "time": 25.222,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-12 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Live metrics stream updates occupancy count (11/32) and latency registers.",
+            "fontPx": 16.77,
+            "time": 27.719,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#popup-step-13 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Atomic mutation committed to ParkingSystem_t: FLAG_ENTRY_REQUEST and FLAG_SORT_NEEDED bits set.",
+            "fontPx": 16.77,
+            "time": 30.217,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-14 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Slot #02 marked OCCUPIED. Tariff accumulator and timestamp committed.",
+            "fontPx": 16.77,
+            "time": 32.714,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-15 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Source viewer requests ANSI C synthesis from lib/keil-source-generator.ts.",
+            "fontPx": 16.77,
+            "time": 35.211,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-6 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Step 06 • MOUNTS",
+            "fontPx": 17.08,
+            "time": 12.736,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-1 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Operator initiates browser parking ingress session. Slot #02 requested.",
+            "fontPx": 17.18,
+            "time": 0.25,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-2 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Dashboard mounts animated barrier arm and optical IR beam sensor components.",
+            "fontPx": 17.18,
+            "time": 2.747,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-3 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Dashboard binds simulation mode (Auto/Manual) and tick speed toggles.",
+            "fontPx": 17.18,
+            "time": 5.244,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-4 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Dashboard mounts interactive 32-bay parking grid with vehicle sprites.",
+            "fontPx": 17.18,
+            "time": 7.741,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#popup-step-5 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Dashboard links real-time FSM state visualizer, bit-packed flags & console.",
+            "fontPx": 17.18,
+            "time": 10.239,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-1 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Operator / Student ➔ Parking Dashboard",
+            "fontPx": 18,
+            "time": 0,
+            "seconds": 2.872
+          },
+          {
+            "selector": "#inspector-step-1 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "{\"event\": \"OPERATOR_INGRESS\", \"slot_id\": 2, \"plate\": \"KA-01-MJ-2810\", \"type\": \"CAR\"}",
+            "fontPx": 18,
+            "time": 0,
+            "seconds": 2.872
+          },
+          {
+            "selector": "div.status-left > div:nth-of-type(2)",
+            "text": "ParkCore · LPC1768 ARM Cortex-M3 Simulation Core",
+            "fontPx": 18,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#clock-display",
+            "text": "00.0s / 45.0s",
+            "fontPx": 18,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "div.status-right > span:nth-of-type(2)",
+            "text": "● 30 FPS",
+            "fontPx": 18,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#inspector-step-2 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Parking Dashboard ➔ Boom Barrier & Sensor",
+            "fontPx": 18,
+            "time": 2.747,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-2 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "import { AnimatedBarrierGate } from \"./animated-barrier-gate\"; // Mounted with 90° Servo Rotation & IR Beam Logic",
+            "fontPx": 18,
+            "time": 2.747,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-3 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Parking Dashboard ➔ Control Panel",
+            "fontPx": 18,
+            "time": 5.244,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-3 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "g_system.flags.AUTO_MODE = 1; cfg.refresh_rate_ms = 50; // Active 50ms tick loop",
+            "fontPx": 18,
+            "time": 5.244,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-4 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Parking Dashboard ➔ 32-Slot Grid",
+            "fontPx": 18,
+            "time": 7.741,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-4 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "const [slots, setSlots] = useState",
+            "fontPx": 18,
+            "time": 7.741,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-4 > div:nth-of-type(2) > div:nth-of-type(1) > slot[]:nth-of-type(1)",
+            "text": "(INITIAL_32_SLOTS); // Initial Vacant bays: 22/32",
+            "fontPx": 18,
+            "time": 7.741,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-5 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Parking Dashboard ➔ Telemetry & Debug",
+            "fontPx": 18,
+            "time": 10.239,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-5 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Live Watch: { state: \"STATE_IDLE\", occupied: 10, total_revenue: \"$142.50\" }",
+            "fontPx": 18,
+            "time": 10.239,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-6 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Parking Dashboard ➔ Source Code Viewer",
+            "fontPx": 18,
+            "time": 12.736,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-6 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "export function SourceCodeViewer({ code }: { code: string }) // LPC1768 C Code preview",
+            "fontPx": 18,
+            "time": 12.736,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-7 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Control Panel ➔ Simulation Hook",
+            "fontPx": 18,
+            "time": 15.233,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-7 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "useEffect(() => { const timer = setInterval(tick, 50); return () => clearInterval(timer); }, []);",
+            "fontPx": 18,
+            "time": 15.233,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-8 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "32-Slot Grid ➔ Simulation Hook",
+            "fontPx": 18,
+            "time": 17.73,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-8 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "onSlotClick(slotId: 2, type: \"CAR\", plate: \"KA-01-MJ-2810\"); // Bay selection event",
+            "fontPx": 18,
+            "time": 17.73,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-9 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Simulation Hook ➔ Boom Barrier & Sensor",
+            "fontPx": 18,
+            "time": 20.228,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-9 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "LPC_PWM1->MR4 = 75000; // 90° Barrier Lift (1.5ms pulse) LPC_GPIO0->FIOPIN &= ~(1 << 4); // IR Trip",
+            "fontPx": 18,
+            "time": 20.228,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-10 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Simulation Hook ➔ FSM State Machine",
+            "fontPx": 18,
+            "time": 22.725,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-10 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "fsm_handle_event(&fsm, EVT_ENTRY_SENSOR); // State: STATE_IDLE -> STATE_PROCESS_ENTRY",
+            "fontPx": 18,
+            "time": 22.725,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-11 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Simulation Hook ➔ Slot & Fee Engine",
+            "fontPx": 18,
+            "time": 25.222,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-11 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "int slot = slot_alloc_find_nearest(VEHICLE_CAR); fee_meter_start(slot, RATE_CAR);",
+            "fontPx": 18,
+            "time": 25.222,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-12 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Simulation Hook ➔ Telemetry & Debug",
+            "fontPx": 18,
+            "time": 27.719,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-12 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "telemetry_broadcast(&g_system.state, sizeof(ParkingSystem_t)); // Occupancy: 11/32, Latency: 0.1ms",
+            "fontPx": 18,
+            "time": 27.719,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-13 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Simulation Hook ➔ In-Memory System State",
+            "fontPx": 18,
+            "time": 30.217,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-13 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "g_system.flags |= (FLAG_ENTRY_REQUEST | FLAG_SORT_NEEDED); g_system.timer_ticks += 1;",
+            "fontPx": 18,
+            "time": 30.217,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-14 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Slot & Fee Engine ➔ In-Memory System State",
+            "fontPx": 18,
+            "time": 32.714,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-14 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "g_system.slots[2].status = OCCUPIED; g_system.slots[2].entry_timestamp = get_time();",
+            "fontPx": 18,
+            "time": 32.714,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-15 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Source Code Viewer ➔ Keil Source Generator",
+            "fontPx": 18,
+            "time": 35.211,
+            "seconds": 2.747
+          },
+          {
+            "selector": "#inspector-step-15 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "const cCode = generateKeilSource(g_system); // Emits main.c, parking_system.h, ui_dashboard.h, ui_dashboard.c",
+            "fontPx": 18,
+            "time": 35.211,
+            "seconds": 2.747
+          },
+          {
+            "selector": "#inspector-step-16 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Keil Source Generator ➔ Keil uVision 5",
+            "fontPx": 18,
+            "time": 37.708,
+            "seconds": 7.492
+          },
+          {
+            "selector": "#inspector-step-16 > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "UV4.exe -b ParkCore.uvprojx -j0 Target: \"LPC1768_Sim\" - 0 Error(s), 0 Warning(s). Verified Flash Complete.",
+            "fontPx": 18,
+            "time": 37.708,
+            "seconds": 7.492
+          },
+          {
+            "selector": "#popup-step-6 > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Dashboard mounts ANSI C syntax highlighter and Keil LPC1768 project exporter.",
+            "fontPx": 18.22,
+            "time": 12.736,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#node-barrier_gate > text:nth-of-type(1)",
+            "text": "Boom Barrier & Sensor",
+            "fontPx": 18.32,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(30) > text:nth-of-type(1)",
+            "text": "interacts",
+            "fontPx": 18.32,
+            "time": 0,
+            "seconds": 25.472
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(31) > text:nth-of-type(1)",
+            "text": "mounts",
+            "fontPx": 18.32,
+            "time": 0,
+            "seconds": 37.958
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(32) > text:nth-of-type(1)",
+            "text": "mounts",
+            "fontPx": 18.32,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(33) > text:nth-of-type(1)",
+            "text": "mounts",
+            "fontPx": 18.32,
+            "time": 0,
+            "seconds": 37.958
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(34) > text:nth-of-type(1)",
+            "text": "mounts",
+            "fontPx": 18.32,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(35) > text:nth-of-type(1)",
+            "text": "mounts",
+            "fontPx": 18.32,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(36) > text:nth-of-type(1)",
+            "text": "servo & IR events",
+            "fontPx": 18.32,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(37) > text:nth-of-type(1)",
+            "text": "start / step / reset",
+            "fontPx": 18.32,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(38) > text:nth-of-type(1)",
+            "text": "slot clicks",
+            "fontPx": 18.32,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(39) > text:nth-of-type(1)",
+            "text": "state stream",
+            "fontPx": 18.32,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(44) > text:nth-of-type(1)",
+            "text": "generates C",
+            "fontPx": 18.32,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(40) > text:nth-of-type(1)",
+            "text": "tick transitions",
+            "fontPx": 18.32,
+            "time": 2.622,
+            "seconds": 42.578
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(41) > text:nth-of-type(1)",
+            "text": "allocates",
+            "fontPx": 18.32,
+            "time": 2.622,
+            "seconds": 42.578
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(42) > text:nth-of-type(1)",
+            "text": "mutates state",
+            "fontPx": 18.32,
+            "time": 2.622,
+            "seconds": 42.578
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(43) > text:nth-of-type(1)",
+            "text": "slot updates",
+            "fontPx": 18.32,
+            "time": 2.747,
+            "seconds": 42.453
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(45) > text:nth-of-type(1)",
+            "text": "exports source",
+            "fontPx": 18.32,
+            "time": 2.872,
+            "seconds": 42.328
+          },
+          {
+            "selector": "#node-dashboard > text:nth-of-type(1)",
+            "text": "Parking Dashboard",
+            "fontPx": 18.78,
+            "time": 0,
+            "seconds": 37.958
+          },
+          {
+            "selector": "#popup-step-16 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Keil uVision 5 Project Exported & Built",
+            "fontPx": 18.89,
+            "time": 37.708,
+            "seconds": 7.367
+          },
+          {
+            "selector": "#node-dashboard > text:nth-of-type(2)",
+            "text": "Tab & Layout Orchestration",
+            "fontPx": 19.24,
+            "time": 0,
+            "seconds": 37.958
+          },
+          {
+            "selector": "#node-keil_gen > text:nth-of-type(1)",
+            "text": "Keil Source Generator",
+            "fontPx": 19.69,
+            "time": 2.747,
+            "seconds": 42.453
+          },
+          {
+            "selector": "#node-code_viewer > text:nth-of-type(1)",
+            "text": "Source Code Viewer",
+            "fontPx": 19.92,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#node-keil_ide > text:nth-of-type(2)",
+            "text": "ARM Simulator / LPC1768",
+            "fontPx": 20.15,
+            "time": 3.122,
+            "seconds": 42.078
+          },
+          {
+            "selector": "#node-operator > text:nth-of-type(2)",
+            "text": "Browser UI Interaction",
+            "fontPx": 20.61,
+            "time": 0,
+            "seconds": 22.975
+          },
+          {
+            "selector": "#node-barrier_gate > text:nth-of-type(2)",
+            "text": "Servo & IR Beam Sensor",
+            "fontPx": 20.61,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#node-controls > text:nth-of-type(2)",
+            "text": "Simulation Modes & Speed",
+            "fontPx": 20.61,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#node-slot_grid > text:nth-of-type(2)",
+            "text": "Cars, Bikes & Trucks",
+            "fontPx": 20.61,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#node-telemetry > text:nth-of-type(2)",
+            "text": "FSM, Flags & Console",
+            "fontPx": 20.61,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#node-sim_hook > text:nth-of-type(2)",
+            "text": "useParkingSimulation Tick",
+            "fontPx": 20.61,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(47) > text:nth-of-type(1)",
+            "text": "Simulation & Emulation Core",
+            "fontPx": 20.61,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#node-keil_gen > text:nth-of-type(2)",
+            "text": "LPC1768 C Code Generator",
+            "fontPx": 20.61,
+            "time": 2.622,
+            "seconds": 42.578
+          },
+          {
+            "selector": "#node-fsm_engine > text:nth-of-type(2)",
+            "text": "14 System States",
+            "fontPx": 20.61,
+            "time": 2.747,
+            "seconds": 42.453
+          },
+          {
+            "selector": "#node-allocation > text:nth-of-type(2)",
+            "text": "Slot Lookup & Pricing",
+            "fontPx": 20.61,
+            "time": 2.747,
+            "seconds": 42.453
+          },
+          {
+            "selector": "#node-system_state > text:nth-of-type(2)",
+            "text": "ParkingSystem_t Struct",
+            "fontPx": 20.61,
+            "time": 2.747,
+            "seconds": 42.453
+          },
+          {
+            "selector": "#node-code_viewer > text:nth-of-type(2)",
+            "text": "Keil C Exporter UI",
+            "fontPx": 20.61,
+            "time": 5.119,
+            "seconds": 40.081
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(46) > text:nth-of-type(1)",
+            "text": "Next.js Presentation Layer",
+            "fontPx": 20.61,
+            "time": 15.108,
+            "seconds": 20.603
+          },
+          {
+            "selector": "#node-telemetry > text:nth-of-type(1)",
+            "text": "Telemetry & Debug",
+            "fontPx": 21.07,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(48) > g:nth-of-type(1) > text:nth-of-type(1)",
+            "text": "Frontend",
+            "fontPx": 22.9,
+            "time": 5.619,
+            "seconds": 17.231
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(48) > g:nth-of-type(2) > text:nth-of-type(1)",
+            "text": "Backend",
+            "fontPx": 22.9,
+            "time": 5.619,
+            "seconds": 19.728
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(48) > g:nth-of-type(3) > text:nth-of-type(1)",
+            "text": "Database",
+            "fontPx": 22.9,
+            "time": 5.619,
+            "seconds": 32.214
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(48) > g:nth-of-type(4) > text:nth-of-type(1)",
+            "text": "External",
+            "fontPx": 22.9,
+            "time": 5.619,
+            "seconds": 39.581
+          },
+          {
+            "selector": "#popup-step-7 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Simulation Loop Dispatched",
+            "fontPx": 23.06,
+            "time": 15.233,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-8 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Interactive Slot Click Triggered",
+            "fontPx": 23.06,
+            "time": 17.73,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#popup-step-9 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Servo & Optical IR Sensor Actuation",
+            "fontPx": 23.06,
+            "time": 20.228,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-10 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "FSM State Transition",
+            "fontPx": 23.06,
+            "time": 22.725,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-11 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Slot Search & Fee Meter Initialized",
+            "fontPx": 23.06,
+            "time": 25.222,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-12 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Telemetry State Stream Broadcast",
+            "fontPx": 23.06,
+            "time": 27.719,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#popup-step-13 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "System State Mutation Committed",
+            "fontPx": 23.06,
+            "time": 30.217,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-14 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Slot Occupancy & Tariff Bitfield Update",
+            "fontPx": 23.06,
+            "time": 32.714,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-15 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Keil LPC1768 C Code Generator",
+            "fontPx": 23.06,
+            "time": 35.211,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-1 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Operator Ingress Request",
+            "fontPx": 23.62,
+            "time": 0.25,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-2 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Boom Barrier UI Mounted",
+            "fontPx": 23.62,
+            "time": 2.747,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-3 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Control Panel UI Mounted",
+            "fontPx": 23.62,
+            "time": 5.244,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#popup-step-4 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "32-Slot Grid Canvas Mounted",
+            "fontPx": 23.62,
+            "time": 7.741,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#popup-step-5 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Telemetry & Debug Monitor Mounted",
+            "fontPx": 23.62,
+            "time": 10.239,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#node-sim_hook > text:nth-of-type(1)",
+            "text": "Simulation Hook",
+            "fontPx": 23.82,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#node-fsm_engine > text:nth-of-type(1)",
+            "text": "FSM State Machine",
+            "fontPx": 24.27,
+            "time": 2.747,
+            "seconds": 42.453
+          },
+          {
+            "selector": "#node-allocation > text:nth-of-type(1)",
+            "text": "Slot & Fee Engine",
+            "fontPx": 24.27,
+            "time": 2.747,
+            "seconds": 42.453
+          },
+          {
+            "selector": "#popup-step-6 > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Source Code Viewer Mounted",
+            "fontPx": 25.06,
+            "time": 12.736,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#node-operator > text:nth-of-type(1)",
+            "text": "Operator / Student",
+            "fontPx": 25.19,
+            "time": 0,
+            "seconds": 22.975
+          },
+          {
+            "selector": "#node-controls > text:nth-of-type(1)",
+            "text": "Control Panel",
+            "fontPx": 25.19,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#node-slot_grid > text:nth-of-type(1)",
+            "text": "32-Slot Grid",
+            "fontPx": 25.19,
+            "time": 0,
+            "seconds": 45.2
+          },
+          {
+            "selector": "#node-system_state > text:nth-of-type(1)",
+            "text": "In-Memory System State",
+            "fontPx": 25.19,
+            "time": 2.622,
+            "seconds": 42.578
+          },
+          {
+            "selector": "#node-keil_ide > text:nth-of-type(1)",
+            "text": "Keil uVision 5",
+            "fontPx": 25.19,
+            "time": 3.122,
+            "seconds": 42.078
+          },
+          {
+            "selector": "#archify-svg > g:nth-of-type(48) > text:nth-of-type(1)",
+            "text": "Legend",
+            "fontPx": 27.48,
+            "time": 5.369,
+            "seconds": 17.356
+          },
+          {
+            "selector": "#inspector-step-1 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Operator Ingress Request",
+            "fontPx": 28,
+            "time": 0,
+            "seconds": 2.872
+          },
+          {
+            "selector": "#inspector-step-2 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Boom Barrier UI Mounted",
+            "fontPx": 28,
+            "time": 2.747,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-3 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Control Panel UI Mounted",
+            "fontPx": 28,
+            "time": 5.244,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-4 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "32-Slot Grid Canvas Mounted",
+            "fontPx": 28,
+            "time": 7.741,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-5 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Telemetry & Debug Monitor Mounted",
+            "fontPx": 28,
+            "time": 10.239,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-6 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Source Code Viewer Mounted",
+            "fontPx": 28,
+            "time": 12.736,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-7 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Simulation Loop Dispatched",
+            "fontPx": 28,
+            "time": 15.233,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-8 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Interactive Slot Click Triggered",
+            "fontPx": 28,
+            "time": 17.73,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-9 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Servo & Optical IR Sensor Actuation",
+            "fontPx": 28,
+            "time": 20.228,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-10 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "FSM State Transition",
+            "fontPx": 28,
+            "time": 22.725,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-11 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Slot Search & Fee Meter Initialized",
+            "fontPx": 28,
+            "time": 25.222,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-12 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Telemetry State Stream Broadcast",
+            "fontPx": 28,
+            "time": 27.719,
+            "seconds": 2.623
+          },
+          {
+            "selector": "#inspector-step-13 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "System State Mutation Committed",
+            "fontPx": 28,
+            "time": 30.217,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-14 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Slot Occupancy & Tariff Bitfield Update",
+            "fontPx": 28,
+            "time": 32.714,
+            "seconds": 2.622
+          },
+          {
+            "selector": "#inspector-step-15 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Keil LPC1768 C Code Generator",
+            "fontPx": 28,
+            "time": 35.211,
+            "seconds": 2.747
+          },
+          {
+            "selector": "#inspector-step-16 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+            "text": "Keil uVision 5 Project Exported & Built",
+            "fontPx": 28,
+            "time": 37.708,
+            "seconds": 7.492
+          }
+        ]
+      }
+    ],
+    "enabled": true,
+    "step": 0.125,
+    "samples": 362
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "audio_none",
+        "severity": "info",
+        "message": "The film has no sound: no clip in it plays audio.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0
+      }
+    ]
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

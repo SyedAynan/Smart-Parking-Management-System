@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ParkCore Thumbnail Showcase</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #060911;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #F8FAFC;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    /* 16:9 Landscape Thumbnail (1920x1080) */
+    .thumb-16x9 {
+      width: 1920px;
+      height: 1080px;
+      position: relative;
+      background: #070B14;
+      background-image: 
+        radial-gradient(circle at 50% 55%, rgba(6, 182, 212, 0.16) 0%, rgba(16, 185, 129, 0.06) 40%, transparent 70%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 48px 48px, 48px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 44px 64px 38px 64px;
+    }
+
+    /* Ambient Corner Accents */
+    .thumb-16x9::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.15), transparent 70%);
+      pointer-events: none;
+    }
+    .thumb-16x9::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.15), transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Top Header Section */
+    .header {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .badge-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.45);
+      color: #22D3EE;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22D3EE;
+      box-shadow: 0 0 10px #22D3EE;
+    }
+
+    .meta-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #94A3B8;
+      letter-spacing: 0.05em;
+    }
+
+    .meta-highlight {
+      color: #38BDF8;
+      font-weight: 700;
+    }
+
+    .main-title {
+      font-size: 46px;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .main-title .gradient-text {
+      background: linear-gradient(135deg, #38BDF8 0%, #22D3EE 50%, #34D399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      font-weight: 500;
+      color: #94A3B8;
+      letter-spacing: -0.01em;
+      max-width: 1100px;
+    }
+
+    .subtitle strong {
+      color: #E2E8F0;
+      font-weight: 700;
+    }
+
+    /* Window Chrome & Screenshot Frame */
+    .window-container {
+      width: 100%;
+      max-width: 1440px;
+      background: #0B0F19;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 
+        0 24px 60px -12px rgba(0, 0, 0, 0.85),
+        0 0 45px rgba(6, 182, 212, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
+      position: relative;
+    }
+
+    /* Mac Window Titlebar */
+    .window-titlebar {
+      height: 38px;
+      background: #0F1626;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      position: relative;
+    }
+
+    .traffic-lights {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .traffic-light {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+
+    .traffic-light.close { background: #EF4444; }
+    .traffic-light.min { background: #F59E0B; }
+    .traffic-light.max { background: #10B981; }
+
+    .window-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748B;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .window-title-accent {
+      color: #38BDF8;
+    }
+
+    .window-body {
+      width: 100%;
+      background: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .window-body img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    /* Bottom Technical Specs Pill Bar */
+    .specs-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      z-index: 10;
+      width: 100%;
+    }
+
+    .spec-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: #E2E8F0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .spec-item.highlight-cyan {
+      border-color: rgba(6, 182, 212, 0.4);
+      background: rgba(6, 182, 212, 0.08);
+      color: #38BDF8;
+    }
+
+    .spec-item.highlight-green {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.08);
+      color: #34D399;
+    }
+
+    .spec-item.highlight-amber {
+      border-color: rgba(245, 158, 11, 0.4);
+      background: rgba(245, 158, 11, 0.08);
+      color: #FBBF24;
+    }
+
+    .spec-icon {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 16:9 LANDSCAPE THUMBNAIL CANVAS (1920x1080) -->
+  <div class="thumb-16x9" id="thumbnail-canvas">
+    
+    <!-- Top Header -->
+    <div class="header">
+      <div class="badge-bar">
+        <div class="pill-tag">
+          <span class="pill-dot"></span>
+          ARM Cortex-M3 Firmware
+        </div>
+        <div class="meta-tag">
+          CORE: <span class="meta-highlight">100MHz PLL0</span> &nbsp;|&nbsp; 
+          ARCH: <span class="meta-highlight">NXP LPC1768</span> &nbsp;|&nbsp;
+          FSM: <span class="meta-highlight">14-State Deterministic</span>
+        </div>
+      </div>
+      <h1 class="main-title">
+        ParkCore: <span class="gradient-text">Autonomous Smart Parking System</span>
+      </h1>
+      <p class="subtitle">
+        Bare-metal <strong>NXP LPC1768 C firmware</strong> synchronized with real-time <strong>Next.js digital twin</strong> &amp; 50Hz PWM servo boom gates
+      </p>
+    </div>
+
+    <!-- Center: Authentic User Screenshot in Sleek Developer Window -->
+    <div class="window-container">
+      <div class="window-titlebar">
+        <div class="traffic-lights">
+          <div class="traffic-light close"></div>
+          <div class="traffic-light min"></div>
+          <div class="traffic-light max"></div>
+        </div>
+        <div class="window-title">
+          <span>parkcore-dashboard</span>
+          <span>•</span>
+          <span class="window-title-accent">ARM Cortex-M3 (LPC1768) Keil uVision Live Simulation</span>
+        </div>
+      </div>
+      <div class="window-body">
+        <img src="S:/user_parkcore_screenshot.jpg" alt="ParkCore Smart Parking Simulator">
+      </div>
+    </div>
+
+    <!-- Bottom Specs Strip -->
+    <div class="specs-bar">
+      <div class="spec-item highlight-cyan">
+        <span class="spec-icon">⚡</span>
+        <span>14-State Deterministic FSM</span>
+      </div>
+      <div class="spec-item highlight-green">
+        <span class="spec-icon">🕹️</span>
+        <span>50Hz PWM1.1 Servo Boom Gates</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-icon">📡</span>
+        <span>Optical IR Beam (GPIO P0.4)</span>
+      </div>
+      <div class="spec-item highlight-amber">
+        <span class="spec-icon">📊</span>
+        <span>32-Bay Bitmapped Telemetry</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-icon">📟</span>
+        <span>UART0 115200 Baud Telemetry</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

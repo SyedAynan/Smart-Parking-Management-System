@@ -273,7 +273,7 @@ export function processVehicleExit(system: ParkingSystem, slotId: number): Parki
   
   const slot = system.slots[slotId];
   
-  if (slot.status !== 'OCCUPIED' || !slot.entryTime || !slot.vehicleType) {
+  if (slot.status !== 'OCCUPIED' || slot.entryTime === null || slot.entryTime === undefined || !slot.vehicleType) {
     newSystem.flags.ERROR_FLAG = true;
     newSystem.errorCode = 0x02; // Invalid exit request
     newSystem = addEvent(newSystem, {

@@ -3,7 +3,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import {
   ParkingSystem,
-  SystemState,
   VehicleType,
   createInitialSystem,
   initializeSystem,
@@ -18,6 +17,7 @@ import {
   generateVehicleId,
   getRandomVehicleType,
 } from '@/lib/parking-system';
+import { simulationAudio } from '@/lib/simulation-audio';
 
 export interface SimulationState {
   system: ParkingSystem;
@@ -26,6 +26,7 @@ export interface SimulationState {
   mode: 'manual' | 'auto';
   sortSteps: ParkingSystem['slots'][] | null;
   currentSortStep: number;
+  activeTransitSlot: number | null;
 }
 
 export function useParkingSimulation() {
@@ -36,10 +37,12 @@ export function useParkingSimulation() {
     mode: 'manual',
     sortSteps: null,
     currentSortStep: 0,
+    activeTransitSlot: null,
   });
 
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const sortIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const transitTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // State machine tick
   const tick = useCallback(() => {
@@ -67,15 +70,23 @@ export function useParkingSimulation() {
           break;
 
         case 'STATE_WAIT_INPUT':
-          // In auto mode, generate random events
-          if (prev.mode === 'auto' && system.simTime % 5 === 0) {
+          // In auto mode, generate continuous realistic parking flow
+          if (prev.mode === 'auto' && system.simTime % 4 === 0) {
             const random = Math.random();
-            if (random < 0.4 && system.stats.currentOccupancy < 32) {
+            if (random < 0.55 && system.stats.currentOccupancy < 32) {
+              const vehicleType = getRandomVehicleType();
+              const vehicleId = generateVehicleId();
               system.flags.ENTRY_REQUEST = true;
               system = transitionState(system, 'STATE_PROCESS_ENTRY');
-            } else if (random < 0.7 && system.stats.currentOccupancy > 0) {
-              system.flags.EXIT_REQUEST = true;
-              system = transitionState(system, 'STATE_PROCESS_EXIT');
+              system = processVehicleEntry(system, vehicleType, vehicleId);
+            } else if (random < 0.85 && system.stats.currentOccupancy > 0) {
+              const occupiedSlots = system.slots.filter((s) => s.status === 'OCCUPIED');
+              if (occupiedSlots.length > 0) {
+                const randomSlot = occupiedSlots[Math.floor(Math.random() * occupiedSlots.length)];
+                system.flags.EXIT_REQUEST = true;
+                system = transitionState(system, 'STATE_PROCESS_EXIT');
+                system = processVehicleExit(system, randomSlot.id);
+              }
             } else if (system.flags.SORT_NEEDED) {
               system = transitionState(system, 'STATE_SORT_SLOTS');
             } else if (system.flags.DISPLAY_UPDATE) {
@@ -85,25 +96,13 @@ export function useParkingSimulation() {
           break;
 
         case 'STATE_PROCESS_ENTRY':
-          {
-            const vehicleType = getRandomVehicleType();
-            const vehicleId = generateVehicleId();
-            system = processVehicleEntry(system, vehicleType, vehicleId);
-            system.flags.ENTRY_REQUEST = false;
-            system = transitionState(system, 'STATE_UPDATE_SLOT');
-          }
+          system.flags.ENTRY_REQUEST = false;
+          system = transitionState(system, 'STATE_UPDATE_SLOT');
           break;
 
         case 'STATE_PROCESS_EXIT':
-          {
-            const occupiedSlots = system.slots.filter((s) => s.status === 'OCCUPIED');
-            if (occupiedSlots.length > 0) {
-              const randomSlot = occupiedSlots[Math.floor(Math.random() * occupiedSlots.length)];
-              system = processVehicleExit(system, randomSlot.id);
-            }
-            system.flags.EXIT_REQUEST = false;
-            system = transitionState(system, 'STATE_CALC_FEE');
-          }
+          system.flags.EXIT_REQUEST = false;
+          system = transitionState(system, 'STATE_CALC_FEE');
           break;
 
         case 'STATE_CALC_FEE':
@@ -114,7 +113,7 @@ export function useParkingSimulation() {
         case 'STATE_UPDATE_SLOT':
           system.flags.SORT_NEEDED = true;
           system.flags.DISPLAY_UPDATE = true;
-          system = transitionState(system, 'STATE_SORT_SLOTS');
+          system = transitionState(system, 'STATE_DISPLAY');
           break;
 
         case 'STATE_SORT_SLOTS':
@@ -184,6 +183,7 @@ export function useParkingSimulation() {
       mode: 'manual',
       sortSteps: null,
       currentSortStep: 0,
+      activeTransitSlot: null,
     });
   }, []);
 
@@ -200,21 +200,44 @@ export function useParkingSimulation() {
     });
   }, []);
 
-  // Manual actions
+  // Enhanced Manual Actions with True State Transitions
   const manualEntry = useCallback((vehicleType: VehicleType) => {
     setState((prev) => {
       const vehicleId = generateVehicleId();
-      let system = processVehicleEntry(prev.system, vehicleType, vehicleId);
-      system = transitionState(system, 'STATE_UPDATE_SLOT');
-      return { ...prev, system };
+      let system = transitionState(prev.system, 'STATE_PROCESS_ENTRY');
+      system = processVehicleEntry(system, vehicleType, vehicleId);
+
+      const allocatedSlot = system.eventLog[system.eventLog.length - 1]?.slotId ?? null;
+
+      // Automatically advance state machine after gate sequence
+      if (transitTimeoutRef.current) clearTimeout(transitTimeoutRef.current);
+      transitTimeoutRef.current = setTimeout(() => {
+        setState((latest) => {
+          let updated = transitionState(latest.system, 'STATE_UPDATE_SLOT');
+          updated = transitionState(updated, 'STATE_WAIT_INPUT');
+          return { ...latest, system: updated, activeTransitSlot: null };
+        });
+      }, 2500);
+
+      return { ...prev, system, activeTransitSlot: allocatedSlot };
     });
   }, []);
 
   const manualExit = useCallback((slotId: number) => {
     setState((prev) => {
-      let system = processVehicleExit(prev.system, slotId);
-      system = transitionState(system, 'STATE_CALC_FEE');
-      return { ...prev, system };
+      let system = transitionState(prev.system, 'STATE_PROCESS_EXIT');
+      system = processVehicleExit(system, slotId);
+
+      if (transitTimeoutRef.current) clearTimeout(transitTimeoutRef.current);
+      transitTimeoutRef.current = setTimeout(() => {
+        setState((latest) => {
+          let updated = transitionState(latest.system, 'STATE_CALC_FEE');
+          updated = transitionState(updated, 'STATE_WAIT_INPUT');
+          return { ...latest, system: updated, activeTransitSlot: null };
+        });
+      }, 2000);
+
+      return { ...prev, system, activeTransitSlot: slotId };
     });
   }, []);
 
